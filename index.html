@@ -1071,6 +1071,31 @@ function buildMonthPageHTML(mesId, mesNum, ano, budget) {
 
 // ── INFLUENCIADORES ───────────────────────────────────
 
+// ── INFLU VIEW TOGGLE ────────────────────────────────
+var influView = 'cards';
+var listSortKey = 'nome';
+var listSortDir = 1;
+
+function setInfluView(view) {
+  influView = view;
+  var btnCards = document.getElementById('btn-view-cards');
+  var btnList = document.getElementById('btn-view-list');
+  var gridEl = document.getElementById('influ-grid');
+  var listEl = document.getElementById('influ-list');
+  if (btnCards) btnCards.classList.toggle('active', view === 'cards');
+  if (btnList) btnList.classList.toggle('active', view === 'list');
+  if (gridEl) gridEl.style.display = view === 'cards' ? '' : 'none';
+  if (listEl) listEl.style.display = view === 'list' ? '' : 'none';
+  if (view === 'list') renderInfluList();
+  else renderInfluGrid();
+}
+
+function sortInfluList(key) {
+  if (listSortKey === key) listSortDir *= -1;
+  else { listSortKey = key; listSortDir = 1; }
+  renderInfluList();
+}
+
 function renderInfluGrid() {
   const grid = document.getElementById('influ-grid');
   if (!influs.length) {
@@ -2008,11 +2033,17 @@ function exportCSV() {
   }
 })();
 
-['influ-modal','campanha-modal','month-modal'].forEach(id => {
-  document.getElementById(id).addEventListener('click', e => { if (e.target.id === id) e.target.classList.remove('open'); });
+['influ-modal','campanha-modal','month-modal'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('click', function(e) {
+    // Only close if clicking directly on the overlay backdrop, not on children
+    if (e.target === el) el.classList.remove('open');
+  });
 });
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') // Setup date popup buttons
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeInfluModal(); closeCampanhaModal(); closeMonthModal(); }
+});
+// Setup date popup buttons
 (function() {
   var cancelBtn = document.getElementById('datePopupCancel');
   var saveBtn = document.getElementById('datePopupSave');
@@ -2037,8 +2068,7 @@ document.addEventListener('keydown', e => {
   }
 })();
 
-['influ-modal','campanha-modal','month-modal'].forEach(id => document.getElementById(id).classList.remove('open'));
-});
+// modals handled above
 
 // ── FIREBASE INIT ────────────────────────────────────
 var firebaseConfig = {
