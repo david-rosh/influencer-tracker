@@ -2054,9 +2054,34 @@ var db = firebase.firestore();
 var auth = firebase.auth();
 var currentUser = null;
 
-// Auth state listener - primary handler
-auth.onAuthStateChanged(function(user) {
+function hideLoginScreen() {
   var ls = document.getElementById('loginScreen');
+  if (ls) ls.parentNode.removeChild(ls);
+}
+
+function showLoginError(msg) {
+  var e = document.getElementById('loginError');
+  if (e) { e.textContent = msg; e.style.display = 'block'; }
+}
+
+// Handle redirect result first (when returning from Google)
+auth.getRedirectResult().then(function(result) {
+  if (result && result.user) {
+    // Coming back from redirect - user is authenticated
+    currentUser = result.user;
+    hideLoginScreen();
+    if (!window._appInitialized) {
+      window._appInitialized = true;
+      initApp();
+    }
+  }
+}).catch(function(err) {
+  console.error('Redirect result error:', err);
+  showLoginError('Erro ao autenticar. Tente novamente.');
+});
+
+// Auth state change
+auth.onAuthStateChanged(function(user) {
   if (user) {
     currentUser = user;
     hideLoginScreen();
@@ -2065,43 +2090,34 @@ auth.onAuthStateChanged(function(user) {
       initApp();
     }
   } else {
-    // Check if we're in the middle of a redirect
-    if (sessionStorage.getItem('pendingLogin')) return;
     currentUser = null;
     window._appInitialized = false;
+    var ls = document.getElementById('loginScreen');
     if (ls) ls.style.display = 'flex';
   }
 });
 
-// Handle redirect result
-auth.getRedirectResult().then(function(result) {
-  sessionStorage.removeItem('pendingLogin');
-  if (result && result.user) {
-    hideLoginScreen();
-  }
-}).catch(function(err) {
-  sessionStorage.removeItem('pendingLogin');
-  console.error('Redirect error:', err);
-  var e = document.getElementById('loginError');
-  if (e) { e.textContent = 'Erro: ' + err.message; e.style.display = 'block'; }
-});
-
-function hideLoginScreen() {
-  var ls = document.getElementById('loginScreen');
-  if (ls) {
-    ls.style.cssText = 'display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;z-index:-1!important';
-  }
-}
-
 function signInWithGoogle() {
-  sessionStorage.setItem('pendingLogin', '1');
   var provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithRedirect(provider).catch(function(err) {
-    sessionStorage.removeItem('pendingLogin');
-    var e = document.getElementById('loginError');
-    if (e) { e.textContent = 'Erro: ' + err.message; e.style.display = 'block'; }
+  // Try popup first, fall back to redirect if blocked
+  auth.signInWithPopup(provider).then(function(result) {
+    currentUser = result.user;
+    hideLoginScreen();
+    if (!window._appInitialized) {
+      window._appInitialized = true;
+      initApp();
+    }
+  }).catch(function(err) {
+    if (err.code === 'auth/popup-blocked' || err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request') {
+      // Popup blocked, try redirect
+      auth.signInWithRedirect(provider);
+    } else {
+      console.error('Login error:', err);
+      showLoginError('Erro: ' + err.message);
+    }
   });
 }
+
 function signOut() { auth.signOut(); }
 
 var saveTimer = null;
