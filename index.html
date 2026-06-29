@@ -2068,11 +2068,27 @@ auth.onAuthStateChanged(function(user) {
   var ls = document.getElementById('loginScreen');
   if (user) {
     currentUser = user;
-    if (ls) ls.style.display = 'none';
-    initApp();
+    // Hide login screen múltiplas formas para garantir
+    if (ls) {
+      ls.style.display = 'none';
+      ls.style.visibility = 'hidden';
+      ls.style.opacity = '0';
+      ls.style.pointerEvents = 'none';
+    }
+    // Só chama initApp uma vez
+    if (!window._appInitialized) {
+      window._appInitialized = true;
+      initApp();
+    }
   } else {
     currentUser = null;
-    if (ls) ls.style.display = 'flex';
+    window._appInitialized = false;
+    if (ls) {
+      ls.style.display = 'flex';
+      ls.style.visibility = 'visible';
+      ls.style.opacity = '1';
+      ls.style.pointerEvents = 'auto';
+    }
   }
 });
 
