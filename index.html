@@ -1,10 +1,9 @@
-
-var mesLabels = {'mes-1':'Abril 2026','mes-2':'Maio 2026','mes-3':'Junho 2026','mes-4':'Julho 2026','mes-5':'Agosto 2026'};<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Influencer Tracker</title>
+<title>Marketing de Influência - Gestão de Budget</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&display=swap');
 
@@ -609,6 +608,7 @@ tr:hover .row-del { opacity: 1; }
 <div class="toast" id="toast"></div>
 
 <script>
+var mesLabels = {'mes-1':'Abril 2026','mes-2':'Maio 2026','mes-3':'Junho 2026','mes-4':'Julho 2026','mes-5':'Agosto 2026'};
 const MONTH_NAMES = ['','Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const DIAS_SEMANA = ['Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado','Domingo'];
 const STATUS_LIST = ['Finalizada','Em andamento','Na fila','Pausada','Postergada'];
@@ -1106,8 +1106,7 @@ function renderInfluGrid() {
     const monthRows = activeMeses.map(mesId => {
       const mv = byMes[mesId] || { rcs: 0, din: 0 };
       if (mv.rcs === 0 && mv.din === 0) return '';
-      const tab = document.querySelector(`[data-tab="${mesId}"]`);
-      const label = tab ? tab.childNodes[0].textContent.trim().replace('📅 ','') : mesId;
+      const label = getMesLabel(mesId);
       const tot = mv.rcs + mv.din;
       return `<tr>
         <td class="mes-name">${label}</td>
@@ -1776,6 +1775,31 @@ function addMeses(mes, ano, n) {
 
 function mesKey(mes, ano) {
   return `${ano}-${String(mes).padStart(2,'0')}`;
+}
+
+
+function payAllMonth(mk) {
+  var ids = [];
+  activeMeses.forEach(function(mesId) {
+    var mes = getMesNum(mesId), ano = getMesAno(mesId);
+    var shifted = addMeses(mes, ano, 2);
+    if (mesKey(shifted.mes, shifted.ano) === mk) {
+      (campanhas[mesId]||[]).forEach(function(c) {
+        c.rows.forEach(function(r) {
+          if (r.influId && r.tipo === 'Dinheiro') ids.push(r.influId);
+        });
+      });
+    }
+  });
+  // Check if all already paid
+  var allPaid = ids.length > 0 && ids.every(function(iid) { return pagamentos[iid] && pagamentos[iid][mk]; });
+  ids.forEach(function(iid) {
+    if (!pagamentos[iid]) pagamentos[iid] = {};
+    pagamentos[iid][mk] = !allPaid;
+  });
+  scheduleSave();
+  renderFluxo();
+  showToast(allPaid ? 'Pagamentos desmarcados' : 'Todos marcados como pagos!', allPaid ? '↩' : '✅', !allPaid);
 }
 
 function renderFluxo() {
