@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+var mesLabels = {'mes-1':'Abril 2026','mes-2':'Maio 2026','mes-3':'Junho 2026','mes-4':'Julho 2026','mes-5':'Agosto 2026'};<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -899,19 +900,14 @@ var currentMesId = 'mes-1';
 function buildMonthSelect() {
   var sel = document.getElementById('monthNativeSelect');
   if (!sel) return;
-  var prev = sel.value;
   sel.innerHTML = '';
   activeMeses.forEach(function(mid) {
-    var mesEl = document.getElementById(mid + '-mes');
-    var anoEl = document.getElementById(mid + '-ano');
-    var label = mesEl ? MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value : mid;
     var opt = document.createElement('option');
     opt.value = mid;
-    opt.textContent = label;
+    opt.textContent = getMesLabel(mid);
     if (mid === currentMesId) opt.selected = true;
     sel.appendChild(opt);
   });
-  // Add separator + novo mês option
   var sep = document.createElement('option');
   sep.disabled = true;
   sep.textContent = '──────────';
@@ -1754,11 +1750,11 @@ function toggleCampanha(mesId, campId) {
 
 // ── FLUXO DE PAGAMENTOS ──────────────────────────────
 
-function getMesLabel(mesId) {
-  const mesEl = document.getElementById(mesId + '-mes');
-  const anoEl = document.getElementById(mesId + '-ano');
-  if (!mesEl) return mesId;
-  return MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value;
+function getMesLabel(mid) {
+  var mesEl = document.getElementById(mid + '-mes');
+  var anoEl = document.getElementById(mid + '-ano');
+  if (mesEl && anoEl && mesEl.value) return MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value;
+  return mesLabels[mid] || mid;
 }
 
 function getMesNum(mesId) {
