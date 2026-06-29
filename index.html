@@ -159,8 +159,9 @@ tr:hover .row-del { opacity: 1; }
 .month-config-sep { color: var(--border-2); font-size: 20px; padding-top: 16px; }
 
 /* MODAL */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
 .modal-overlay.open { display: flex; }
+.date-popup-overlay { z-index: 3000; }
 .modal { background: var(--white); border-radius: 14px; width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 64px rgba(0,0,0,0.18); }
 .modal-hd { padding: 18px 22px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .modal-title { font-size: 15px; font-weight: 700; }
@@ -261,8 +262,28 @@ tr:hover .row-del { opacity: 1; }
 .fluxo-summary .aberto-val { color: var(--accent); font-weight: 700; }
 .fluxo-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 24px; }
 </style>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen" style="display:none;position:fixed;inset:0;background:#0D0D0D;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px">
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:600;color:#666;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px">Gestão de Marketing de Influência</div>
+    <div style="background:#1F2937;border-radius:16px;padding:40px;width:360px;box-shadow:0 24px 64px rgba(0,0,0,0.5)">
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:8px">Bem-vindo</div>
+      <div style="font-size:13px;color:#6B7280;margin-bottom:28px">Faça login para acessar o sistema</div>
+      <button id="googleLoginBtn" style="width:100%;padding:13px;background:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.15s">
+        <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z"/></svg>
+        Entrar com Google
+      </button>
+      <div id="loginError" style="color:#EF4444;font-size:12px;margin-top:12px;display:none">Erro ao fazer login. Tente novamente.</div>
+    </div>
+  </div>
+</div>
 
 <header class="app-header">
   <div class="app-brand">
@@ -882,22 +903,28 @@ let pagamentos = {};
 // ── MONTH SELECT ─────────────────────────────────────
 var currentMesId = 'mes-1';
 
+function getMesLabel(mid) {
+  // First try DOM elements, then fall back to mesLabels map
+  var mesEl = document.getElementById(mid + '-mes');
+  var anoEl = document.getElementById(mid + '-ano');
+  if (mesEl && anoEl && mesEl.value) {
+    return MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value;
+  }
+  return mesLabels[mid] || mid;
+}
+
 function buildMonthSelect() {
   var sel = document.getElementById('monthNativeSelect');
   if (!sel) return;
-  var prev = sel.value;
   sel.innerHTML = '';
   activeMeses.forEach(function(mid) {
-    var mesEl = document.getElementById(mid + '-mes');
-    var anoEl = document.getElementById(mid + '-ano');
-    var label = mesEl ? MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value : mid;
+    var label = getMesLabel(mid);
     var opt = document.createElement('option');
     opt.value = mid;
     opt.textContent = label;
     if (mid === currentMesId) opt.selected = true;
     sel.appendChild(opt);
   });
-  // Add separator + novo mês option
   var sep = document.createElement('option');
   sep.disabled = true;
   sep.textContent = '──────────';
@@ -973,6 +1000,11 @@ function showTab(tabId, el) {
 }
 
 function updateTabLabel(mesId) {
+  var mesEl = document.getElementById(mesId + '-mes');
+  var anoEl = document.getElementById(mesId + '-ano');
+  if (mesEl && anoEl) {
+    mesLabels[mesId] = MONTH_NAMES[parseInt(mesEl.value)] + ' ' + anoEl.value;
+  }
   buildMonthSelect();
 }
 
@@ -1002,6 +1034,7 @@ function confirmAddMonth() {
   page.innerHTML = buildMonthPageHTML(mesId, mesNum, ano, budget);
   document.body.appendChild(page);
 
+  mesLabels[mesId] = label;
   closeMonthModal();
   buildMonthSelect();
   selectMonth(mesId);
@@ -1161,6 +1194,7 @@ function saveInflu() {
   renderInfluGrid();
   if (influView === 'list') renderInfluList();
   activeMeses.forEach(m => renderCampanhasBlock(m));
+  scheduleSave();
 }
 
 function deleteInflu(id) {
@@ -1193,6 +1227,7 @@ function confirmAddCampanha() {
   closeCampanhaModal();
   renderCampanhasBlock(campModalMesId);
   recalcBudget(campModalMesId);
+  scheduleSave();
   showToast('Campanha "' + nome + '" criada!', '✅', true);
 }
 
@@ -1499,6 +1534,7 @@ function saveDatePopup() {
   closeDatePopup();
   renderCalendario();
   renderCampanhasBlock(datePopupState ? datePopupState.mesId : '');
+  scheduleSave();
   showToast('Data atualizada!', '✅', true);
 }
 
@@ -1926,6 +1962,7 @@ function togglePagamento(influId, mk) {
   if (!pagamentos[influId]) pagamentos[influId] = {};
   pagamentos[influId][mk] = !pagamentos[influId][mk];
   renderFluxo();
+  scheduleSave();
 }
 
 // ── HELPERS ───────────────────────────────────────────
