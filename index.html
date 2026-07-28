@@ -300,7 +300,7 @@ tr:hover .row-del { opacity: 1; }
     </select>
   </div>
   <div class="tab" data-tab="calendario" onclick="showTab('calendario', this)">📆 Calendário</div>
-  <div class="tab" data-tab="fluxo" onclick="showTab('fluxo', this)">💸 Fluxo de Pagamentos</div>
+  <div class="tab" id="tabFluxo" data-tab="fluxo" style="display:none" onclick="showTab('fluxo', this)">💸 Fluxo de Pagamentos</div>
 </div>
 
 <!-- PAGE: CADASTRO -->
@@ -2101,10 +2101,25 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 var auth = firebase.auth();
 var currentUser = null;
+var currentUserRole = null;
 
 function hideLoginScreen() {
   var ls = document.getElementById('loginScreen');
   if (ls) ls.parentNode.removeChild(ls);
+}
+
+function applyRolePermissions() {
+  if (!currentUser) return;
+  db.collection('roles').doc(currentUser.email).get().then(function(doc) {
+    currentUserRole = doc.exists ? doc.data().role : 'viewer';
+    var tabFluxo = document.getElementById('tabFluxo');
+    if (tabFluxo) {
+      tabFluxo.style.display = (currentUserRole === 'editor') ? '' : 'none';
+    }
+  }).catch(function(e) {
+    console.error('Role fetch error:', e);
+    currentUserRole = 'viewer';
+  });
 }
 
 function showLoginError(msg) {
@@ -2118,6 +2133,7 @@ auth.getRedirectResult().then(function(result) {
     // Coming back from redirect - user is authenticated
     currentUser = result.user;
     hideLoginScreen();
+    applyRolePermissions();
     if (!window._appInitialized) {
       window._appInitialized = true;
       initApp();
@@ -2133,6 +2149,7 @@ auth.onAuthStateChanged(function(user) {
   if (user) {
     currentUser = user;
     hideLoginScreen();
+    applyRolePermissions();
     if (!window._appInitialized) {
       window._appInitialized = true;
       initApp();
@@ -2151,6 +2168,7 @@ function signInWithGoogle() {
   auth.signInWithPopup(provider).then(function(result) {
     currentUser = result.user;
     hideLoginScreen();
+    applyRolePermissions();
     if (!window._appInitialized) {
       window._appInitialized = true;
       initApp();
