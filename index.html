@@ -872,7 +872,7 @@ tr:hover .row-del { opacity: 1; }
     <div class="score-col">
       <div class="score-card score-card-cal">
         <div class="score-card-title">Calibrar o Score Geral <span class="score-client">Rappi</span></div>
-        <p>Defina quanto cada objetivo pesa no Score Geral. A soma precisa fechar em <b>100%</b>.</p>
+        <p>Defina quanto cada objetivo pesa no Score Geral. Ao mover um, os outros três se ajustam proporcionalmente — a soma fica sempre em <b>100%</b>.</p>
         <div class="cal-presets">
           <button class="btn btn-ghost btn-sm" onclick="setScorePreset(25,25,25,25)">Equilibrado</button>
           <button class="btn btn-ghost btn-sm" onclick="setScorePreset(70,10,10,10)">Foco em awareness</button>
@@ -2452,13 +2452,13 @@ function renderScorePage() {
   calApply();
   var saved = document.getElementById('calSaved'); if (saved) saved.textContent = '';
 }
-function calApply() {
+function calApply(skipNumKey) {
   var m = { aw:'awareness', en:'engajamento', ro:'roi', cp:'cpm' };
   if (calDraft.cpm === undefined) calDraft.cpm = 0;
   Object.keys(m).forEach(function(k) {
     var v = calDraft[m[k]];
     var R = document.getElementById('cal' + k.charAt(0).toUpperCase() + k.slice(1) + 'R'); var N = document.getElementById('cal' + k.charAt(0).toUpperCase() + k.slice(1) + 'N');
-    if (R) R.value = v; if (N) N.value = v;
+    if (R) R.value = v; if (N && m[k] !== skipNumKey) N.value = v; // não sobrescreve o campo que está sendo digitado
   });
   var sum = calDraft.awareness + calDraft.engajamento + calDraft.roi + calDraft.cpm;
   var el = document.getElementById('calSum'); if (el) { el.textContent = 'Soma: ' + sum + '%' + (sum !== 100 ? ' — precisa fechar em 100%' : ''); el.className = 'cal-sum' + (sum !== 100 ? ' bad' : ''); }
@@ -2471,8 +2471,19 @@ function calSync(k, src) {
   var m = { aw:'awareness', en:'engajamento', ro:'roi', cp:'cpm' };
   var id = 'cal' + k.charAt(0).toUpperCase() + k.slice(1) + src;
   var v = Math.max(0, Math.min(100, parseInt(document.getElementById(id).value) || 0));
-  calDraft[m[k]] = v;
-  calApply();
+  var key = m[k];
+  // Rebalanceia os outros três proporcionalmente para a soma fechar em 100
+  var outros = Object.keys(m).map(function(x) { return m[x]; }).filter(function(x) { return x !== key; });
+  var resto = 100 - v;
+  var totOutros = outros.reduce(function(s, x) { return s + (calDraft[x] || 0); }, 0);
+  var novos = {};
+  if (totOutros > 0) outros.forEach(function(x) { novos[x] = Math.round((calDraft[x] || 0) * resto / totOutros); });
+  else outros.forEach(function(x) { novos[x] = Math.round(resto / outros.length); });
+  // corrige arredondamento no maior dos outros
+  var soma = v + outros.reduce(function(s, x) { return s + novos[x]; }, 0);
+  if (soma !== 100) { var maior = outros.slice().sort(function(a, b) { return novos[b] - novos[a]; })[0]; novos[maior] += 100 - soma; if (novos[maior] < 0) novos[maior] = 0; }
+  calDraft[key] = v; outros.forEach(function(x) { calDraft[x] = novos[x]; });
+  calApply(src === 'N' ? key : null);
 }
 function setScorePreset(a, e, r, c) { calDraft = { awareness: a, engajamento: e, roi: r, cpm: c || 0 }; calApply(); }
 function saveScoreConfig() {
