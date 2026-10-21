@@ -2452,19 +2452,32 @@ function renderScorePage() {
   calApply();
   var saved = document.getElementById('calSaved'); if (saved) saved.textContent = '';
 }
+// Inteiros para exibir/salvar: arredonda e ajusta o resíduo para somar exatamente 100
+function calInteiros(d) {
+  var keys = ['awareness','engajamento','roi','cpm'];
+  var out = {}; var soma = 0;
+  keys.forEach(function(k) { out[k] = Math.round(d[k] || 0); soma += out[k]; });
+  if (soma !== 100) {
+    var residuos = keys.map(function(k) { return { k: k, r: (d[k] || 0) - out[k] }; }).sort(function(a, b) { return soma > 100 ? a.r - b.r : b.r - a.r; });
+    var diff = 100 - soma;
+    for (var i = 0; diff !== 0 && i < residuos.length; i++) { var step = diff > 0 ? 1 : -1; if (out[residuos[i].k] + step >= 0) { out[residuos[i].k] += step; diff -= step; } }
+  }
+  return out;
+}
 function calApply(skipNumKey) {
   var m = { aw:'awareness', en:'engajamento', ro:'roi', cp:'cpm' };
   if (calDraft.cpm === undefined) calDraft.cpm = 0;
+  var ints = calInteiros(calDraft);
   Object.keys(m).forEach(function(k) {
-    var v = calDraft[m[k]];
+    var v = ints[m[k]];
     var R = document.getElementById('cal' + k.charAt(0).toUpperCase() + k.slice(1) + 'R'); var N = document.getElementById('cal' + k.charAt(0).toUpperCase() + k.slice(1) + 'N');
     if (R) R.value = v; if (N && m[k] !== skipNumKey) N.value = v; // não sobrescreve o campo que está sendo digitado
   });
-  var sum = calDraft.awareness + calDraft.engajamento + calDraft.roi + calDraft.cpm;
+  var sum = ints.awareness + ints.engajamento + ints.roi + ints.cpm;
   var el = document.getElementById('calSum'); if (el) { el.textContent = 'Soma: ' + sum + '%' + (sum !== 100 ? ' — precisa fechar em 100%' : ''); el.className = 'cal-sum' + (sum !== 100 ? ' bad' : ''); }
   var btn = document.getElementById('calSaveBtn'); if (btn) btn.disabled = sum !== 100;
   var bar = document.getElementById('calBar');
-  if (bar) { var t = sum || 1; bar.children[0].style.width = (calDraft.awareness / t * 100) + '%'; bar.children[1].style.width = (calDraft.engajamento / t * 100) + '%'; bar.children[2].style.width = (calDraft.roi / t * 100) + '%'; bar.children[3].style.width = (calDraft.cpm / t * 100) + '%'; }
+  if (bar) { var t = sum || 1; bar.children[0].style.width = (ints.awareness / t * 100) + '%'; bar.children[1].style.width = (ints.engajamento / t * 100) + '%'; bar.children[2].style.width = (ints.roi / t * 100) + '%'; bar.children[3].style.width = (ints.cpm / t * 100) + '%'; }
   renderScorePreview();
 }
 function calSync(k, src) {
@@ -2476,20 +2489,17 @@ function calSync(k, src) {
   var outros = Object.keys(m).map(function(x) { return m[x]; }).filter(function(x) { return x !== key; });
   var resto = 100 - v;
   var totOutros = outros.reduce(function(s, x) { return s + (calDraft[x] || 0); }, 0);
+  // mantém frações internamente para não acumular erro de arredondamento a cada movimento
   var novos = {};
-  if (totOutros > 0) outros.forEach(function(x) { novos[x] = Math.round((calDraft[x] || 0) * resto / totOutros); });
-  else outros.forEach(function(x) { novos[x] = Math.round(resto / outros.length); });
-  // corrige arredondamento no maior dos outros
-  var soma = v + outros.reduce(function(s, x) { return s + novos[x]; }, 0);
-  if (soma !== 100) { var maior = outros.slice().sort(function(a, b) { return novos[b] - novos[a]; })[0]; novos[maior] += 100 - soma; if (novos[maior] < 0) novos[maior] = 0; }
+  if (totOutros > 0) outros.forEach(function(x) { novos[x] = (calDraft[x] || 0) * resto / totOutros; });
+  else outros.forEach(function(x) { novos[x] = resto / outros.length; });
   calDraft[key] = v; outros.forEach(function(x) { calDraft[x] = novos[x]; });
   calApply(src === 'N' ? key : null);
 }
 function setScorePreset(a, e, r, c) { calDraft = { awareness: a, engajamento: e, roi: r, cpm: c || 0 }; calApply(); }
 function saveScoreConfig() {
-  var sum = calDraft.awareness + calDraft.engajamento + calDraft.roi + calDraft.cpm;
-  if (sum !== 100) { showToast('A soma precisa ser 100%', '⚠️'); return; }
-  scoreConfig = Object.assign({}, calDraft);
+  var ints = calInteiros(calDraft);
+  scoreConfig = ints; calDraft = Object.assign({}, ints);
   scheduleSave();
   var saved = document.getElementById('calSaved'); if (saved) saved.textContent = '✓ Calibração salva: ' + scoreConfig.awareness + '% awareness · ' + scoreConfig.engajamento + '% engajamento · ' + scoreConfig.roi + '% ROI · ' + scoreConfig.cpm + '% CPM. O ranking e as medalhas já refletem os novos pesos.';
   showToast('Influencer Score calibrado', '✅', true);
@@ -2497,7 +2507,7 @@ function saveScoreConfig() {
 }
 function renderScorePreview() {
   var el = document.getElementById('scorePreview'); if (!el) return;
-  var R = calcInfluencerScores(calDraft || scoreConfig);
+  var R = calcInfluencerScores(calDraft ? calInteiros(calDraft) : scoreConfig);
   if (!R.n) { el.innerHTML = '<div class="score-note">Sem influenciadores com resultados fechados.</div>'; return; }
   el.innerHTML = R.list.slice().sort(function(a, b) { return a.posGeral - b.posGeral; }).slice(0, 10).map(function(b) {
     return '<div class="rk-row"><span style="color:var(--ink-3);font-weight:800">' + b.posGeral + 'º</span><span class="tier-badge t' + b.tierGeral + '">★</span><span style="font-weight:700;color:var(--ink)">' + b.inf.handle + '</span><b>' + Math.round(b.geral) + '</b></div>';
