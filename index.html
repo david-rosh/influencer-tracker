@@ -344,7 +344,7 @@ tr:hover .row-del { opacity: 1; }
 .dia-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
 .dia-chip { display:flex; flex-direction:column; align-items:center; gap:2px; padding:10px 4px; border:1.5px solid var(--border); border-radius:10px; cursor:pointer; user-select:none; transition:all .12s; }
 .dia-chip input { display:none; }
-.dia-chip.outro { opacity:.55; }
+.dia-chip.outro { opacity:1; }
 .dia-chip:hover { border-color:var(--accent); }
 .dia-chip.on { background:var(--accent); border-color:var(--accent); color:#fff; opacity:1; }
 .dia-chip-n { font-size:12px; font-weight:800; }
@@ -2746,6 +2746,7 @@ function openDiasModal(mesId, campId, rowId, n, kind) {
   document.getElementById('dias-modal-sub').textContent = (inf ? inf.handle + ' · ' : '') + qtd + ' ' + (kind === 'stories' ? 'stories' : 'posts no feed') + ' negociado' + (qtd===1?'':'s') + '. Selecione os dias de postagem:';
   var sel = s[kind + 'Dias'] || [];
   var html = '';
+  document.getElementById('dias-modal-sub').textContent += ' Os 7 dias da semana ISO estão disponíveis, mesmo os de outro mês civil.';
   for (var d = 0; d < 7; d++) {
     var dt = new Date(w.ini); dt.setDate(w.ini.getDate() + d);
     var iso = toISO(dt);
