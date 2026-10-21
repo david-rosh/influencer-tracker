@@ -1,0 +1,2482 @@
+{
+ "versao": "backup-pre-v11",
+ "geradoEm": "2026-10-21",
+ "descricao": "Backup dos dados embutidos na versão anterior (Abril–Agosto 2026) + cadastro de influenciadores. Importável pelo menu Backup da plataforma.",
+ "influs": [
+  {
+   "id": 1,
+   "nome": "hamandak",
+   "handle": "@hamandak",
+   "link": "https://www.instagram.com/hamandak/reels/",
+   "cupom": ""
+  },
+  {
+   "id": 2,
+   "nome": "realduarte10",
+   "handle": "@realduarte10",
+   "link": "https://www.instagram.com/realduarte10",
+   "cupom": ""
+  },
+  {
+   "id": 3,
+   "nome": "luisabaschera",
+   "handle": "@luisabaschera",
+   "link": "https://www.instagram.com/luisabaschera/",
+   "cupom": ""
+  },
+  {
+   "id": 4,
+   "nome": "torsoniyago",
+   "handle": "@torsoniyago",
+   "link": "https://www.instagram.com/torsoniyago/",
+   "cupom": ""
+  },
+  {
+   "id": 5,
+   "nome": "tatasimoess",
+   "handle": "@tatasimoess",
+   "link": "https://www.instagram.com/tatasimoess",
+   "cupom": ""
+  },
+  {
+   "id": 6,
+   "nome": "bacomparato",
+   "handle": "@bacomparato",
+   "link": "https://www.instagram.com/bacomparato",
+   "cupom": ""
+  },
+  {
+   "id": 7,
+   "nome": "desiree.eleutheriou",
+   "handle": "@desiree.eleutheriou",
+   "link": "https://www.instagram.com/desiree.eleutheriou",
+   "cupom": ""
+  },
+  {
+   "id": 8,
+   "nome": "manugep",
+   "handle": "@manugep",
+   "link": "https://www.instagram.com/manugep/",
+   "cupom": ""
+  },
+  {
+   "id": 9,
+   "nome": "guiboury",
+   "handle": "@guiboury",
+   "link": "https://www.instagram.com/guiboury",
+   "cupom": ""
+  },
+  {
+   "id": 10,
+   "nome": "e.manuvelez",
+   "handle": "@e.manuvelez",
+   "link": "https://www.instagram.com/e.manuvelez/",
+   "cupom": ""
+  },
+  {
+   "id": 11,
+   "nome": "guinhan_",
+   "handle": "@guinhan_",
+   "link": "https://www.instagram.com/guinhan_/",
+   "cupom": ""
+  },
+  {
+   "id": 12,
+   "nome": "timaonaveiaa",
+   "handle": "@timaonaveiaa",
+   "link": "https://www.instagram.com/timaonaveiaa/",
+   "cupom": ""
+  },
+  {
+   "id": 13,
+   "nome": "obrunomayer",
+   "handle": "@obrunomayer",
+   "link": "https://www.instagram.com/obrunomayer/",
+   "cupom": ""
+  },
+  {
+   "id": 14,
+   "nome": "nicollebeatric",
+   "handle": "@nicollebeatric",
+   "link": "https://www.instagram.com/nicollebeatric/",
+   "cupom": ""
+  },
+  {
+   "id": 15,
+   "nome": "yaspolli",
+   "handle": "@yaspolli",
+   "link": "https://www.instagram.com/yaspolli/reels/",
+   "cupom": ""
+  },
+  {
+   "id": 16,
+   "nome": "biaoliveira_",
+   "handle": "@biaoliveira_",
+   "link": "https://www.instagram.com/biaoliveira_/",
+   "cupom": ""
+  },
+  {
+   "id": 17,
+   "nome": "achadosdoapto",
+   "handle": "@achadosdoapto",
+   "link": "https://www.instagram.com/achadosdoapto/",
+   "cupom": ""
+  },
+  {
+   "id": 18,
+   "nome": "tainavonheld",
+   "handle": "@tainavonheld",
+   "link": "https://www.instagram.com/tainavonheld",
+   "cupom": ""
+  },
+  {
+   "id": 19,
+   "nome": "dragabriellyromanoo",
+   "handle": "@dragabriellyromanoo",
+   "link": "https://www.instagram.com/dragabriellyromanoo/",
+   "cupom": ""
+  },
+  {
+   "id": 20,
+   "nome": "carolvairo",
+   "handle": "@carolvairo",
+   "link": "https://www.instagram.com/carolvairo/",
+   "cupom": ""
+  },
+  {
+   "id": 21,
+   "nome": "vittoriamello",
+   "handle": "@vittoriamello",
+   "link": "https://www.instagram.com/vittoriamello",
+   "cupom": ""
+  },
+  {
+   "id": 22,
+   "nome": "harenkrishna_",
+   "handle": "@harenkrishna_",
+   "link": "https://www.instagram.com/harenkrishna_/",
+   "cupom": ""
+  },
+  {
+   "id": 23,
+   "nome": "josycarneiro",
+   "handle": "@josycarneiro",
+   "link": "https://www.instagram.com/josycarneiro",
+   "cupom": ""
+  },
+  {
+   "id": 24,
+   "nome": "marinamellocorrea",
+   "handle": "@marinamellocorrea",
+   "link": "https://www.instagram.com/marinamellocorrea",
+   "cupom": ""
+  },
+  {
+   "id": 25,
+   "nome": "becca_olinaap",
+   "handle": "@becca_olinaap",
+   "link": "https://www.instagram.com/becca_olinaap/",
+   "cupom": ""
+  },
+  {
+   "id": 26,
+   "nome": "nicoleprazeres",
+   "handle": "@nicoleprazeres",
+   "link": "https://www.instagram.com/nicoleprazeres/",
+   "cupom": ""
+  },
+  {
+   "id": 27,
+   "nome": "viviannunesxxs",
+   "handle": "@viviannunesxxs",
+   "link": "https://www.instagram.com/viviannunesxxs/",
+   "cupom": ""
+  },
+  {
+   "id": 28,
+   "nome": "mauferreiira",
+   "handle": "@mauferreiira",
+   "link": "https://www.instagram.com/@mauferreiira",
+   "cupom": ""
+  },
+  {
+   "id": 29,
+   "nome": "soouelizmota_",
+   "handle": "@soouelizmota_",
+   "link": "https://www.instagram.com/soouelizmota_/",
+   "cupom": ""
+  },
+  {
+   "id": 30,
+   "nome": "japaroldo",
+   "handle": "@japaroldo",
+   "link": "https://www.instagram.com/japaroldo",
+   "cupom": ""
+  },
+  {
+   "id": 31,
+   "nome": "negrrit4",
+   "handle": "@negrrit4",
+   "link": "https://www.instagram.com/negrrit4",
+   "cupom": ""
+  },
+  {
+   "id": 32,
+   "nome": "lolinhalolo",
+   "handle": "@lolinhalolo",
+   "link": "https://www.instagram.com/lolinhalolo/",
+   "cupom": ""
+  },
+  {
+   "id": 33,
+   "nome": "sams.mrs",
+   "handle": "@sams.mrs",
+   "link": "",
+   "cupom": ""
+  },
+  {
+   "id": 34,
+   "nome": "eigabbi",
+   "handle": "@eigabbi",
+   "link": "https://www.instagram.com/eigabbi/",
+   "cupom": ""
+  },
+  {
+   "id": 35,
+   "nome": "stheeez",
+   "handle": "@stheeez",
+   "link": "https://www.instagram.com/stheeez/reels/",
+   "cupom": ""
+  },
+  {
+   "id": 36,
+   "nome": "_miissanchez",
+   "handle": "@_miissanchez",
+   "link": "https://www.instagram.com/_miissanchez",
+   "cupom": ""
+  },
+  {
+   "id": 37,
+   "nome": "melpuente",
+   "handle": "@melpuente",
+   "link": "https://www.instagram.com/melpuente/",
+   "cupom": ""
+  },
+  {
+   "id": 38,
+   "nome": "juliacastroig",
+   "handle": "@juliacastroig",
+   "link": "https://www.instagram.com/juliacastroig/",
+   "cupom": ""
+  },
+  {
+   "id": 39,
+   "nome": "pameladacleopatra_",
+   "handle": "@pameladacleopatra_",
+   "link": "https://www.instagram.com/pameladacleopatra_/",
+   "cupom": ""
+  },
+  {
+   "id": 40,
+   "nome": "euamovinho",
+   "handle": "@euamovinho",
+   "link": "https://www.instagram.com/euamovinho/",
+   "cupom": ""
+  },
+  {
+   "id": 41,
+   "nome": "laralcamargo",
+   "handle": "@laralcamargo",
+   "link": "https://www.instagram.com/laralcamargo",
+   "cupom": ""
+  },
+  {
+   "id": 42,
+   "nome": "brelopes",
+   "handle": "@brelopes",
+   "link": "https://www.instagram.com/brelopes/",
+   "cupom": ""
+  },
+  {
+   "id": 43,
+   "nome": "cristianmiller_",
+   "handle": "@cristianmiller_",
+   "link": "https://www.instagram.com/cristianmiller_/",
+   "cupom": ""
+  },
+  {
+   "id": 44,
+   "nome": "sarahfmelo",
+   "handle": "@sarahfmelo",
+   "link": "https://www.instagram.com/sarahfmelo",
+   "cupom": ""
+  },
+  {
+   "id": 45,
+   "nome": "lettdelima",
+   "handle": "@lettdelima",
+   "link": "https://www.instagram.com/lettdelima/",
+   "cupom": ""
+  },
+  {
+   "id": 46,
+   "nome": "isabelaaferrer",
+   "handle": "@isabelaaferrer",
+   "link": "https://www.instagram.com/isabelaaferrer",
+   "cupom": ""
+  },
+  {
+   "id": 47,
+   "nome": "carolzenzeluk",
+   "handle": "@carolzenzeluk",
+   "link": "https://www.instagram.com/carolzenzeluk/",
+   "cupom": ""
+  },
+  {
+   "id": 48,
+   "nome": "ingridfinger",
+   "handle": "@ingridfinger",
+   "link": "https://www.instagram.com/ingridfinger",
+   "cupom": ""
+  },
+  {
+   "id": 49,
+   "nome": "dicaskeyci",
+   "handle": "@dicaskeyci",
+   "link": "https://www.instagram.com/dicaskeyci",
+   "cupom": ""
+  },
+  {
+   "id": 50,
+   "nome": "rodrigored_",
+   "handle": "@rodrigored_",
+   "link": "https://www.instagram.com/rodrigored_/",
+   "cupom": ""
+  },
+  {
+   "id": 51,
+   "nome": "cast_liadna",
+   "handle": "@cast_liadna",
+   "link": "https://www.instagram.com/cast_liadna/",
+   "cupom": ""
+  },
+  {
+   "id": 52,
+   "nome": "dudaa.junqueira",
+   "handle": "@dudaa.junqueira",
+   "link": "https://www.instagram.com/dudaa.junqueira/reels/",
+   "cupom": ""
+  },
+  {
+   "id": 53,
+   "nome": "larisbonifacio",
+   "handle": "@larisbonifacio",
+   "link": "https://www.instagram.com/larisbonifacio/",
+   "cupom": ""
+  },
+  {
+   "id": 54,
+   "nome": "gabbegomess",
+   "handle": "@gabbegomess",
+   "link": "https://www.instagram.com/gabbegomess/",
+   "cupom": ""
+  },
+  {
+   "id": 55,
+   "nome": "isaeiroz",
+   "handle": "@isaeiroz",
+   "link": "https://www.instagram.com/isaeiroz/",
+   "cupom": ""
+  },
+  {
+   "id": 56,
+   "nome": "henriquesalina",
+   "handle": "@henriquesalina",
+   "link": "https://www.instagram.com/henriquesalina/",
+   "cupom": ""
+  },
+  {
+   "id": 57,
+   "nome": "eujula",
+   "handle": "@eujula",
+   "link": "https://www.instagram.com/eujula/",
+   "cupom": ""
+  },
+  {
+   "id": 58,
+   "nome": "juliano_faller",
+   "handle": "@juliano_faller",
+   "link": "https://www.instagram.com/juliano_faller/",
+   "cupom": ""
+  },
+  {
+   "id": 59,
+   "nome": "john_leo_gastronomia",
+   "handle": "@john_leo_gastronomia",
+   "link": "https://www.instagram.com/john_leo_gastronomia",
+   "cupom": ""
+  },
+  {
+   "id": 60,
+   "nome": "suaandrade_",
+   "handle": "@suaandrade_",
+   "link": "https://www.instagram.com/suaandrade_/",
+   "cupom": ""
+  },
+  {
+   "id": 61,
+   "nome": "amandamotast",
+   "handle": "@amandamotast",
+   "link": "https://www.instagram.com/amandamotast",
+   "cupom": ""
+  },
+  {
+   "id": 62,
+   "nome": "taismello",
+   "handle": "@taismello",
+   "link": "https://www.instagram.com/taismello/",
+   "cupom": ""
+  },
+  {
+   "id": 63,
+   "nome": "juliamerenciano_",
+   "handle": "@juliamerenciano_",
+   "link": "https://www.instagram.com/juliamerenciano_/",
+   "cupom": ""
+  },
+  {
+   "id": 64,
+   "nome": "joaolucasbaggio",
+   "handle": "@joaolucasbaggio",
+   "link": "https://www.instagram.com/joaolucasbaggio/",
+   "cupom": ""
+  },
+  {
+   "id": 65,
+   "nome": "tarsillavieira_",
+   "handle": "@tarsillavieira_",
+   "link": "https://www.instagram.com/tarsillavieira_/",
+   "cupom": ""
+  },
+  {
+   "id": 66,
+   "nome": "naairaaline",
+   "handle": "@naairaaline",
+   "link": "https://www.instagram.com/naairaaline",
+   "cupom": ""
+  },
+  {
+   "id": 67,
+   "nome": "babisalgueirodaily",
+   "handle": "@babisalgueirodaily",
+   "link": "https://www.instagram.com/babisalgueirodaily/",
+   "cupom": ""
+  },
+  {
+   "id": 68,
+   "nome": "nataliecerejo",
+   "handle": "@nataliecerejo",
+   "link": "https://www.instagram.com/nataliecerejo/",
+   "cupom": ""
+  },
+  {
+   "id": 69,
+   "nome": "giulia_honorato",
+   "handle": "@giulia_honorato",
+   "link": "https://www.instagram.com/giulia_honorato",
+   "cupom": ""
+  },
+  {
+   "id": 70,
+   "nome": "bresouzad",
+   "handle": "@bresouzad",
+   "link": "https://www.instagram.com/bresouzad",
+   "cupom": ""
+  },
+  {
+   "id": 71,
+   "nome": "erika_sf7",
+   "handle": "@erika_sf7",
+   "link": "https://www.instagram.com/erika_sf7/",
+   "cupom": ""
+  },
+  {
+   "id": 72,
+   "nome": "tina.villela",
+   "handle": "@tina.villela",
+   "link": "https://www.instagram.com/tina.villela",
+   "cupom": ""
+  },
+  {
+   "id": 73,
+   "nome": "desibertah",
+   "handle": "@desibertah",
+   "link": "https://www.instagram.com/desibertah/",
+   "cupom": ""
+  },
+  {
+   "id": 74,
+   "nome": "gabylaanza",
+   "handle": "@gabylaanza",
+   "link": "https://www.instagram.com/gabylaanza/",
+   "cupom": ""
+  },
+  {
+   "id": 75,
+   "nome": "nutrianalauranobrega",
+   "handle": "@nutrianalauranobrega",
+   "link": "https://www.instagram.com/nutrianalauranobrega/",
+   "cupom": ""
+  },
+  {
+   "id": 76,
+   "nome": "beatrizpoza",
+   "handle": "@beatrizpoza",
+   "link": "https://www.instagram.com/beatrizpoza/",
+   "cupom": ""
+  },
+  {
+   "id": 77,
+   "nome": "julianaferfila",
+   "handle": "@julianaferfila",
+   "link": "https://www.instagram.com/julianaferfila/",
+   "cupom": ""
+  },
+  {
+   "id": 78,
+   "nome": "eugiuliagrosso",
+   "handle": "@eugiuliagrosso",
+   "link": "https://www.instagram.com/eugiuliagrosso/",
+   "cupom": ""
+  },
+  {
+   "id": 79,
+   "nome": "raphalvez",
+   "handle": "@raphalvez",
+   "link": "https://www.instagram.com/raphalvez/",
+   "cupom": ""
+  },
+  {
+   "id": 80,
+   "nome": "_priscilagurgel",
+   "handle": "@_priscilagurgel",
+   "link": "https://www.instagram.com/_priscilagurgel",
+   "cupom": ""
+  },
+  {
+   "id": 81,
+   "nome": "biavalleoficial",
+   "handle": "@biavalleoficial",
+   "link": "https://www.instagram.com/biavalleoficial/",
+   "cupom": ""
+  },
+  {
+   "id": 82,
+   "nome": "aribittencourt_",
+   "handle": "@aribittencourt_",
+   "link": "https://www.instagram.com/aribittencourt_/",
+   "cupom": ""
+  },
+  {
+   "id": 83,
+   "nome": "carolbonacchi",
+   "handle": "@carolbonacchi",
+   "link": "https://www.instagram.com/carolbonacchi",
+   "cupom": ""
+  },
+  {
+   "id": 84,
+   "nome": "glekauling",
+   "handle": "@glekauling",
+   "link": "https://www.instagram.com/glekauling/",
+   "cupom": ""
+  },
+  {
+   "id": 85,
+   "nome": "thayla.guede",
+   "handle": "@thayla.guede",
+   "link": "https://www.instagram.com/thayla.guede",
+   "cupom": ""
+  },
+  {
+   "id": 86,
+   "nome": "pamelchiades",
+   "handle": "@pamelchiades",
+   "link": "https://www.instagram.com/pamelchiades/",
+   "cupom": ""
+  },
+  {
+   "id": 87,
+   "nome": "heloisadurand",
+   "handle": "@heloisadurand",
+   "link": "https://www.instagram.com/heloisadurand/",
+   "cupom": ""
+  },
+  {
+   "id": 88,
+   "nome": "luckasmouraoficial",
+   "handle": "@luckasmouraoficial",
+   "link": "https://www.instagram.com/julyanalee/",
+   "cupom": ""
+  },
+  {
+   "id": 89,
+   "nome": "sapaixona_",
+   "handle": "@sapaixona_",
+   "link": "https://www.instagram.com/sapaixona_/",
+   "cupom": ""
+  },
+  {
+   "id": 90,
+   "nome": "marimontteiro_",
+   "handle": "@marimontteiro_",
+   "link": "https://www.instagram.com/marimontteiro_/",
+   "cupom": ""
+  },
+  {
+   "id": 91,
+   "nome": "mirellycaps",
+   "handle": "@mirellycaps",
+   "link": "https://www.instagram.com/mirellycaps/",
+   "cupom": ""
+  },
+  {
+   "id": 92,
+   "nome": "brunabenkendorfer",
+   "handle": "@brunabenkendorfer",
+   "link": "https://www.instagram.com/brunabenkendorfer/",
+   "cupom": ""
+  },
+  {
+   "id": 93,
+   "nome": "fewzxy",
+   "handle": "@fewzxy",
+   "link": "https://www.instagram.com/fewzxy/",
+   "cupom": ""
+  },
+  {
+   "id": 94,
+   "nome": "caroljunqueiira",
+   "handle": "@caroljunqueiira",
+   "link": "https://www.instagram.com/caroljunqueiira/",
+   "cupom": ""
+  },
+  {
+   "id": 95,
+   "nome": "kaykegk",
+   "handle": "@kaykegk",
+   "link": "https://www.instagram.com/kaykegk?i",
+   "cupom": ""
+  },
+  {
+   "id": 96,
+   "nome": "biancamoii",
+   "handle": "@biancamoii",
+   "link": "https://www.instagram.com/biancamoii/",
+   "cupom": ""
+  },
+  {
+   "id": 97,
+   "nome": "gabilumi_",
+   "handle": "@gabilumi_",
+   "link": "https://www.instagram.com/gabilumi_/",
+   "cupom": ""
+  },
+  {
+   "id": 98,
+   "nome": "rafinhafootball",
+   "handle": "@rafinhafootball",
+   "link": "https://www.instagram.com/rafinhafootball/",
+   "cupom": ""
+  },
+  {
+   "id": 99,
+   "nome": "rafitiia",
+   "handle": "@rafitiia",
+   "link": "https://www.instagram.com/rafitiia/",
+   "cupom": ""
+  },
+  {
+   "id": 100,
+   "nome": "thatyfq",
+   "handle": "@thatyfq",
+   "link": "https://www.instagram.com/thatyfq/",
+   "cupom": ""
+  },
+  {
+   "id": 101,
+   "nome": "larabacos",
+   "handle": "@larabacos",
+   "link": "https://www.instagram.com/larabacos/",
+   "cupom": ""
+  },
+  {
+   "id": 102,
+   "nome": "contamaisamiga",
+   "handle": "@contamaisamiga",
+   "link": "https://www.instagram.com/contamaisamiga/",
+   "cupom": ""
+  },
+  {
+   "id": 103,
+   "nome": "ingrdgabrielle",
+   "handle": "@ingrdgabrielle",
+   "link": "https://www.instagram.com/ingrdgabrielle?",
+   "cupom": ""
+  },
+  {
+   "id": 104,
+   "nome": "_ritaraujo",
+   "handle": "@_ritaraujo",
+   "link": "https://www.instagram.com/_ritaraujo/",
+   "cupom": ""
+  },
+  {
+   "id": 105,
+   "nome": "anaclaralopes",
+   "handle": "@anaclaralopes",
+   "link": "https://www.instagram.com/anaclaralopes/",
+   "cupom": ""
+  },
+  {
+   "id": 106,
+   "nome": "raquel_natu",
+   "handle": "@raquel_natu",
+   "link": "https://www.instagram.com/raquel_natu/",
+   "cupom": ""
+  },
+  {
+   "id": 107,
+   "nome": "ssarahmesqs",
+   "handle": "@ssarahmesqs",
+   "link": "https://www.instagram.com/ssarahmesqs/",
+   "cupom": ""
+  },
+  {
+   "id": 108,
+   "nome": "achadosdobudget",
+   "handle": "@achadosdobudget",
+   "link": "https://www.instagram.com/achadosdobudget/",
+   "cupom": ""
+  },
+  {
+   "id": 109,
+   "nome": "raigarrcia",
+   "handle": "@raigarrcia",
+   "link": "https://www.instagram.com/raigarrcia/",
+   "cupom": ""
+  },
+  {
+   "id": 110,
+   "nome": "jubboura",
+   "handle": "@jubboura",
+   "link": "https://www.instagram.com/jubboura/",
+   "cupom": ""
+  },
+  {
+   "id": 111,
+   "nome": "felipereis_personal",
+   "handle": "@felipereis_personal",
+   "link": "https://www.instagram.com/felipereis_personal",
+   "cupom": ""
+  },
+  {
+   "id": 112,
+   "nome": "jukoppel",
+   "handle": "@jukoppel",
+   "link": "https://www.instagram.com/jukoppel/",
+   "cupom": ""
+  },
+  {
+   "id": 113,
+   "nome": "vrgvan",
+   "handle": "@vrgvan",
+   "link": "https://www.instagram.com/vrgvan/",
+   "cupom": ""
+  },
+  {
+   "id": 114,
+   "nome": "gabisahade",
+   "handle": "@gabisahade",
+   "link": "https://www.instagram.com/gabisahade/",
+   "cupom": ""
+  },
+  {
+   "id": 115,
+   "nome": "renataacarneiro",
+   "handle": "@renataacarneiro",
+   "link": "https://www.instagram.com/renataacarneiro/",
+   "cupom": ""
+  },
+  {
+   "id": 116,
+   "nome": "sarahmbatista",
+   "handle": "@sarahmbatista",
+   "link": "https://www.instagram.com/sarahmbatista/",
+   "cupom": ""
+  },
+  {
+   "id": 117,
+   "nome": "dicasosasco",
+   "handle": "@dicasosasco",
+   "link": "https://www.instagram.com/dicasosasco",
+   "cupom": ""
+  },
+  {
+   "id": 118,
+   "nome": "meuosasco",
+   "handle": "@meuosasco",
+   "link": "https://www.instagram.com/meuosasco/",
+   "cupom": ""
+  },
+  {
+   "id": 119,
+   "nome": "stellathomaz_",
+   "handle": "@stellathomaz_",
+   "link": "https://www.instagram.com/stellathomaz_/",
+   "cupom": ""
+  },
+  {
+   "id": 120,
+   "nome": "basassi",
+   "handle": "@basassi",
+   "link": "https://www.instagram.com/basassi?i",
+   "cupom": ""
+  },
+  {
+   "id": 121,
+   "nome": "lucasfeitoza",
+   "handle": "@lucasfeitoza",
+   "link": "https://www.instagram.com/lucasfeitoza/",
+   "cupom": ""
+  },
+  {
+   "id": 122,
+   "nome": "patyvaccani",
+   "handle": "@patyvaccani",
+   "link": "https://www.instagram.com/patyvaccani?",
+   "cupom": ""
+  },
+  {
+   "id": 123,
+   "nome": "jeandinucci",
+   "handle": "@jeandinucci",
+   "link": "https://www.instagram.com/jeandinucci?",
+   "cupom": ""
+  },
+  {
+   "id": 124,
+   "nome": "belleciolino",
+   "handle": "@belleciolino",
+   "link": "https://www.instagram.com/belleciolino",
+   "cupom": ""
+  }
+ ],
+ "campanhas": {
+  "mes-1": [
+   {
+    "id": "camp-202604-1",
+    "nome": "Saldão Turbo",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202604-1-0",
+      "influId": 1,
+      "data": "2026-04-28",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202604-1-1",
+      "influId": 3,
+      "data": "2026-04-28",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202604-1-2",
+      "influId": 5,
+      "data": "2026-04-30",
+      "valor": 700,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202604-1-3",
+      "influId": 7,
+      "data": "2026-04-30",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202604-1-4",
+      "influId": 9,
+      "data": "2026-04-30",
+      "valor": 2500,
+      "tipo": "RCS"
+     }
+    ]
+   }
+  ],
+  "mes-2": [
+   {
+    "id": "camp-202605-1",
+    "nome": "Panini",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-1-0",
+      "influId": 2,
+      "data": "2026-05-13",
+      "valor": 800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-1",
+      "influId": 4,
+      "data": "2026-05-14",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-1-2",
+      "influId": 6,
+      "data": "2026-05-16",
+      "valor": 2200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-3",
+      "influId": 8,
+      "data": "2026-05-16",
+      "valor": 750,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-4",
+      "influId": 10,
+      "data": "2026-05-18",
+      "valor": 676.37,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-5",
+      "influId": 11,
+      "data": "2026-05-19",
+      "valor": 900,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-1-6",
+      "influId": 12,
+      "data": "2026-05-20",
+      "valor": 706.9,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-7",
+      "influId": 13,
+      "data": "2026-05-21",
+      "valor": 750,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-1-8",
+      "influId": 14,
+      "data": "2026-05-22",
+      "valor": 700,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-2",
+    "nome": "05.05",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-2-0",
+      "influId": 1,
+      "data": "2026-05-05",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-2-1",
+      "influId": 15,
+      "data": "2026-05-04",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-2-2",
+      "influId": 16,
+      "data": "2026-05-05",
+      "valor": 2500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-2-3",
+      "influId": 17,
+      "data": "2026-05-05",
+      "valor": 800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-2-4",
+      "influId": 18,
+      "data": "2026-05-05",
+      "valor": 1500,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-3",
+    "nome": "Itigo",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-3-0",
+      "influId": 19,
+      "data": "2026-05-16",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-3-1",
+      "influId": 20,
+      "data": "2026-05-17",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-3-2",
+      "influId": 21,
+      "data": "2026-05-16",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-3-3",
+      "influId": 22,
+      "data": "2026-05-17",
+      "valor": 200,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-4",
+    "nome": "Dia das Mães",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-4-0",
+      "influId": 7,
+      "data": "2026-05-06",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-4-1",
+      "influId": 23,
+      "data": "2026-05-07",
+      "valor": 850,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-4-2",
+      "influId": 24,
+      "data": "2026-05-08",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-4-3",
+      "influId": 25,
+      "data": "2026-05-09",
+      "valor": 3500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-4-4",
+      "influId": 26,
+      "data": "2026-05-10",
+      "valor": 5000,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-5",
+    "nome": "Paid Media",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-5-0",
+      "influId": 20,
+      "data": "2026-05-27",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-1",
+      "influId": 27,
+      "data": "2026-05-27",
+      "valor": 250,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-2",
+      "influId": 28,
+      "data": "2026-05-27",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-3",
+      "influId": 29,
+      "data": "2026-05-27",
+      "valor": 250,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-4",
+      "influId": 32,
+      "data": "2026-05-29",
+      "valor": 250,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-5",
+      "influId": 34,
+      "data": "2026-05-29",
+      "valor": 250,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-5-6",
+      "influId": 36,
+      "data": "2026-05-29",
+      "valor": 250,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-6",
+    "nome": "Sephora",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-6-0",
+      "influId": 30,
+      "data": "2026-05-26",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-1",
+      "influId": 31,
+      "data": "2026-05-26",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-2",
+      "influId": 33,
+      "data": "2026-05-25",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-3",
+      "influId": 35,
+      "data": "2026-05-03",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-4",
+      "influId": 37,
+      "data": "2026-05-03",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-5",
+      "influId": 19,
+      "data": "2026-05-17",
+      "valor": 450,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-6-6",
+      "influId": 38,
+      "data": "2026-05-31",
+      "valor": 400,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-7",
+    "nome": "Pro Week",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-7-0",
+      "influId": 39,
+      "data": "2026-05-19",
+      "valor": 350,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-7-1",
+      "influId": 41,
+      "data": "2026-05-18",
+      "valor": 800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-7-2",
+      "influId": 43,
+      "data": "2026-05-20",
+      "valor": 700,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-7-3",
+      "influId": 45,
+      "data": "2026-05-21",
+      "valor": 1100,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-8",
+    "nome": "Santa Luzia",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-8-0",
+      "influId": 40,
+      "data": "2026-05-09",
+      "valor": 2000,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-8-1",
+      "influId": 42,
+      "data": "2026-05-09",
+      "valor": 1800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-8-2",
+      "influId": 44,
+      "data": "2026-05-08",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-9",
+    "nome": "Always On",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-9-0",
+      "influId": 48,
+      "data": "2026-05-03",
+      "valor": 600,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-1",
+      "influId": 5,
+      "data": "2026-05-22",
+      "valor": 450,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-2",
+      "influId": 51,
+      "data": "2026-05-09",
+      "valor": 450,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-3",
+      "influId": 52,
+      "data": "",
+      "valor": 550,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-4",
+      "influId": 37,
+      "data": "2026-05-10",
+      "valor": 350,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-5",
+      "influId": 53,
+      "data": "2026-05-12",
+      "valor": 650,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-6",
+      "influId": 54,
+      "data": "2026-05-12",
+      "valor": 800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-7",
+      "influId": 55,
+      "data": "2026-05-12",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-8",
+      "influId": 56,
+      "data": "2026-05-13",
+      "valor": 2000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-9",
+      "influId": 39,
+      "data": "2026-05-13",
+      "valor": 150,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-10",
+      "influId": 57,
+      "data": "2026-05-14",
+      "valor": 880,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-11",
+      "influId": 58,
+      "data": "2026-05-14",
+      "valor": 1400,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-12",
+      "influId": 59,
+      "data": "2026-05-15",
+      "valor": 2000,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-13",
+      "influId": 60,
+      "data": "2026-05-15",
+      "valor": 120,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-14",
+      "influId": 20,
+      "data": "2026-05-16",
+      "valor": 450,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-15",
+      "influId": 61,
+      "data": "2026-05-19",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-16",
+      "influId": 62,
+      "data": "",
+      "valor": 850,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-17",
+      "influId": 4,
+      "data": "2026-05-20",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-18",
+      "influId": 63,
+      "data": "2026-05-20",
+      "valor": 1500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202605-9-19",
+      "influId": 64,
+      "data": "",
+      "valor": 1200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-20",
+      "influId": 65,
+      "data": "",
+      "valor": 2000,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-21",
+      "influId": 66,
+      "data": "2026-05-24",
+      "valor": 600,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-22",
+      "influId": 2,
+      "data": "2026-05-27",
+      "valor": 800,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-23",
+      "influId": 38,
+      "data": "2026-05-29",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-24",
+      "influId": 67,
+      "data": "2026-05-22",
+      "valor": 1250,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-25",
+      "influId": 68,
+      "data": "2026-05-11",
+      "valor": 900,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-26",
+      "influId": 20,
+      "data": "2026-05-23",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-27",
+      "influId": 69,
+      "data": "2026-05-26",
+      "valor": 400,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-28",
+      "influId": 70,
+      "data": "2026-05-26",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-29",
+      "influId": 71,
+      "data": "2026-05-30",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-30",
+      "influId": 72,
+      "data": "2026-05-29",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-31",
+      "influId": 73,
+      "data": "2026-05-30",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-32",
+      "influId": 74,
+      "data": "2026-05-30",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-33",
+      "influId": 69,
+      "data": "2026-05-31",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-34",
+      "influId": 75,
+      "data": "2026-05-31",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-9-35",
+      "influId": 76,
+      "data": "2026-05-29",
+      "valor": 200,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202605-10",
+    "nome": "Osasco",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202605-10-0",
+      "influId": 49,
+      "data": "2026-05-29",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202605-10-1",
+      "influId": 50,
+      "data": "2026-05-27",
+      "valor": 500,
+      "tipo": "RCS"
+     }
+    ]
+   }
+  ],
+  "mes-3": [
+   {
+    "id": "camp-202606-1",
+    "nome": "Copa do Mundo",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-1-0",
+      "influId": 77,
+      "data": "2026-06-01",
+      "valor": 200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-1",
+      "influId": 6,
+      "data": "2026-06-02",
+      "valor": 1000,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-2",
+      "influId": 6,
+      "data": "2026-06-02",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-3",
+      "influId": 74,
+      "data": "2026-06-03",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-4",
+      "influId": 80,
+      "data": "2026-06-10",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-5",
+      "influId": 8,
+      "data": "2026-06-13",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-6",
+      "influId": 83,
+      "data": "2026-06-13",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-7",
+      "influId": 85,
+      "data": "2026-06-13",
+      "valor": 700,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-8",
+      "influId": 20,
+      "data": "2026-06-13",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-9",
+      "influId": 86,
+      "data": "2026-06-13",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-10",
+      "influId": 2,
+      "data": "2026-06-11",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-11",
+      "influId": 87,
+      "data": "2026-06-13",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-12",
+      "influId": 68,
+      "data": "2026-06-18",
+      "valor": 2500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-13",
+      "influId": 10,
+      "data": "",
+      "valor": 2000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-14",
+      "influId": 58,
+      "data": "2026-06-19",
+      "valor": 2100,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-15",
+      "influId": 44,
+      "data": "",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-16",
+      "influId": 90,
+      "data": "2026-06-17",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-17",
+      "influId": 91,
+      "data": "2026-06-18",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-18",
+      "influId": 92,
+      "data": "2026-06-24",
+      "valor": 350,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-19",
+      "influId": 93,
+      "data": "2026-06-24",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-20",
+      "influId": 94,
+      "data": "2026-06-24",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-21",
+      "influId": 95,
+      "data": "2026-06-19",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-22",
+      "influId": 96,
+      "data": "2026-06-18",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-23",
+      "influId": 85,
+      "data": "2026-06-23",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-24",
+      "influId": 80,
+      "data": "2026-06-20",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-25",
+      "influId": 97,
+      "data": "2026-06-17",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-26",
+      "influId": 98,
+      "data": "2026-06-11",
+      "valor": 7000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-27",
+      "influId": 100,
+      "data": "2026-06-04",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-28",
+      "influId": 100,
+      "data": "2026-06-04",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-29",
+      "influId": 101,
+      "data": "2026-06-04",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-30",
+      "influId": 101,
+      "data": "2026-06-04",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-31",
+      "influId": 102,
+      "data": "2026-06-05",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-32",
+      "influId": 102,
+      "data": "2026-06-05",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-33",
+      "influId": 17,
+      "data": "2026-06-06",
+      "valor": 200,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-34",
+      "influId": 17,
+      "data": "2026-06-06",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-35",
+      "influId": 105,
+      "data": "2026-06-06",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-36",
+      "influId": 106,
+      "data": "2026-06-06",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-1-37",
+      "influId": 106,
+      "data": "2026-06-06",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-38",
+      "influId": 75,
+      "data": "2026-06-06",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-1-39",
+      "influId": 108,
+      "data": "2026-06-06",
+      "valor": 850,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-2",
+    "nome": "Turbo 10",
+    "status": "Finalizada",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-2-0",
+      "influId": 41,
+      "data": "2026-06-10",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-2-1",
+      "influId": 78,
+      "data": "2026-06-10",
+      "valor": 700,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-2-2",
+      "influId": 79,
+      "data": "2026-06-10",
+      "valor": 700,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-2-3",
+      "influId": 81,
+      "data": "2026-06-09",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-2-4",
+      "influId": 82,
+      "data": "2026-06-09",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-2-5",
+      "influId": 84,
+      "data": "2026-06-09",
+      "valor": 900,
+      "tipo": "RCS"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-3",
+    "nome": "Dia dos Namorados",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-3-0",
+      "influId": 88,
+      "data": "2026-06-11",
+      "valor": 4000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-3-1",
+      "influId": 36,
+      "data": "2026-06-12",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-3-2",
+      "influId": 43,
+      "data": "2026-06-12",
+      "valor": 700,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-3-3",
+      "influId": 89,
+      "data": "2026-06-12",
+      "valor": 4500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-3-4",
+      "influId": 91,
+      "data": "2026-06-22",
+      "valor": 750,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-4",
+    "nome": "Franuí",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-4-0",
+      "influId": 103,
+      "data": "2026-06-11",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-4-1",
+      "influId": 104,
+      "data": "2026-06-11",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-4-2",
+      "influId": 54,
+      "data": "2026-06-12",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-4-3",
+      "influId": 107,
+      "data": "2026-06-12",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-5",
+    "nome": "Pay Day",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-5-0",
+      "influId": 109,
+      "data": "2026-06-07",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-5-1",
+      "influId": 104,
+      "data": "2026-06-07",
+      "valor": 900,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-5-2",
+      "influId": 110,
+      "data": "2026-06-08",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-5-3",
+      "influId": 111,
+      "data": "2026-06-08",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-5-4",
+      "influId": 50,
+      "data": "2026-06-08",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-5-5",
+      "influId": 112,
+      "data": "2026-06-08",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-6",
+    "nome": "Arraiá",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-6-0",
+      "influId": 66,
+      "data": "2026-06-20",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-1",
+      "influId": 40,
+      "data": "2026-06-22",
+      "valor": 2000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-2",
+      "influId": 64,
+      "data": "2026-06-22",
+      "valor": 1200,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-3",
+      "influId": 93,
+      "data": "2026-06-20",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-4",
+      "influId": 86,
+      "data": "2026-06-20",
+      "valor": 300,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-5",
+      "influId": 113,
+      "data": "2026-06-21",
+      "valor": 300,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-6-6",
+      "influId": 36,
+      "data": "2026-06-21",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-7",
+    "nome": "Santa Luzia",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-7-0",
+      "influId": 114,
+      "data": "",
+      "valor": 3000,
+      "tipo": "Dinheiro"
+     }
+    ]
+   },
+   {
+    "id": "camp-202606-8",
+    "nome": "Always On",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202606-8-0",
+      "influId": 77,
+      "data": "2026-06-01",
+      "valor": 300,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-1",
+      "influId": 105,
+      "data": "2026-06-01",
+      "valor": 250,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-2",
+      "influId": 115,
+      "data": "2026-06-02",
+      "valor": 500,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-8-3",
+      "influId": 116,
+      "data": "2026-06-03",
+      "valor": 600,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-8-4",
+      "influId": 20,
+      "data": "",
+      "valor": 300,
+      "tipo": "RCS"
+     },
+     {
+      "id": "r-202606-8-5",
+      "influId": 117,
+      "data": "",
+      "valor": 2183.7,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-6",
+      "influId": 118,
+      "data": "",
+      "valor": 2500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-7",
+      "influId": 65,
+      "data": "2026-06-29",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-8",
+      "influId": 49,
+      "data": "2026-06-14",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-9",
+      "influId": 119,
+      "data": "2026-06-19",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-10",
+      "influId": 53,
+      "data": "2026-06-14",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-11",
+      "influId": 39,
+      "data": "2026-06-15",
+      "valor": 300,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-12",
+      "influId": 66,
+      "data": "2026-06-15",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-13",
+      "influId": 80,
+      "data": "2026-06-16",
+      "valor": 300,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-14",
+      "influId": 96,
+      "data": "2026-06-17",
+      "valor": 500,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-15",
+      "influId": 120,
+      "data": "2026-06-19",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-16",
+      "influId": 121,
+      "data": "2026-06-23",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-17",
+      "influId": 92,
+      "data": "2026-06-19",
+      "valor": 350,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-18",
+      "influId": 120,
+      "data": "2026-06-25",
+      "valor": 900,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-19",
+      "influId": 122,
+      "data": "2026-06-21",
+      "valor": 600,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-20",
+      "influId": 123,
+      "data": "2026-06-28",
+      "valor": 900,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-21",
+      "influId": 14,
+      "data": "",
+      "valor": 700,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-22",
+      "influId": 104,
+      "data": "2026-06-28",
+      "valor": 400,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-23",
+      "influId": 119,
+      "data": "2026-06-30",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-24",
+      "influId": 54,
+      "data": "2026-06-29",
+      "valor": 350,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-25",
+      "influId": 116,
+      "data": "2026-06-24",
+      "valor": 450,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-26",
+      "influId": 93,
+      "data": "2026-06-23",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-27",
+      "influId": 124,
+      "data": "2026-06-21",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-28",
+      "influId": 46,
+      "data": "",
+      "valor": 1000,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-29",
+      "influId": 47,
+      "data": "",
+      "valor": 400,
+      "tipo": "Dinheiro"
+     },
+     {
+      "id": "r-202606-8-30",
+      "influId": 60,
+      "data": "2026-06-27",
+      "valor": 630,
+      "tipo": "Dinheiro"
+     }
+    ]
+   }
+  ],
+  "mes-4": [],
+  "mes-5": [
+   {
+    "id": "camp-202608-1",
+    "nome": "Copa do Mundo",
+    "status": "Em andamento",
+    "collapsed": false,
+    "rows": [
+     {
+      "id": "r-202608-1-0",
+      "influId": 99,
+      "data": "2026-08-25",
+      "valor": 800,
+      "tipo": "Dinheiro"
+     }
+    ]
+   }
+  ]
+ },
+ "infoBlocks": {
+  "mes-1": {
+   "editorias": [],
+   "acoes": []
+  },
+  "mes-2": {
+   "editorias": [
+    {
+     "id": "e1",
+     "dia": "Terça-feira",
+     "desc": "ação de cashback de 30% do Supermercado Zona Sul, no Rio de Janeiro."
+    },
+    {
+     "id": "e2",
+     "dia": "Quinta-feira",
+     "desc": "ação de cashback de 30% do Supermercado Grupo Pão de Açúcar."
+    },
+    {
+     "id": "e3",
+     "dia": "Domingo",
+     "desc": "ação de cashback de 30% de Sephora em pedidos acima de R$100. Cashback máximo de R$50."
+    },
+    {
+     "id": "e4",
+     "dia": "Segunda-feira:",
+     "desc": "Mamãe e Bebê - Foco em deals de maternidade | Verticais Farma e E-commerce."
+    },
+    {
+     "id": "e5",
+     "dia": "Terça-feira",
+     "desc": "Dia da Feira - Oportunidades em produtos frescos e hortifruti."
+    },
+    {
+     "id": "e6",
+     "dia": "Quarta-feira",
+     "desc": "Dia de Jogo & Dia do Açougue - Snacks/bebidas (Turbo) e ofertas de carnes (Supermercados)"
+    },
+    {
+     "id": "e7",
+     "dia": "Quinta-feira",
+     "desc": "Dia de Receitas - Criação de conteúdo culinário com itens que vende no app."
+    },
+    {
+     "id": "e8",
+     "dia": "Sexta-feira",
+     "desc": "OOH Rappi Hour - Produtos voltados para happy hour."
+    }
+   ],
+   "acoes": [
+    {
+     "id": "a1",
+     "dia": "Terça-feira",
+     "desc": "Ação de cashback de 30% do Supermercado Zona Sul, no Rio de Janeiro."
+    },
+    {
+     "id": "a2",
+     "dia": "Quinta-feira",
+     "desc": "Ação de cashback de 30% do Supermercado Grupo Pão de Açúcar."
+    },
+    {
+     "id": "a3",
+     "dia": "Domingo",
+     "desc": "Ação de cashback de 30% de Sephora em pedidos acima de R$100."
+    }
+   ]
+  },
+  "mes-3": {
+   "editorias": [],
+   "acoes": []
+  },
+  "mes-4": {
+   "editorias": [],
+   "acoes": []
+  },
+  "mes-5": {
+   "editorias": [],
+   "acoes": []
+  }
+ },
+ "meses": [
+  {
+   "id": "mes-1",
+   "mes": 4,
+   "ano": 2026,
+   "budget": 0
+  },
+  {
+   "id": "mes-2",
+   "mes": 5,
+   "ano": 2026,
+   "budget": 0
+  },
+  {
+   "id": "mes-3",
+   "mes": 6,
+   "ano": 2026,
+   "budget": 0
+  },
+  {
+   "id": "mes-4",
+   "mes": 7,
+   "ano": 2026,
+   "budget": 0
+  },
+  {
+   "id": "mes-5",
+   "mes": 8,
+   "ano": 2026,
+   "budget": 0
+  }
+ ],
+ "semanalMeses": {},
+ "pagamentos": {},
+ "campanhasCatalogo": [],
+ "scoreConfig": {
+  "awareness": 25,
+  "engajamento": 25,
+  "roi": 25,
+  "cpm": 25
+ }
+}
