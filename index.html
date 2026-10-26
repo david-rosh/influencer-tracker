@@ -236,7 +236,13 @@ tr:hover .row-del { opacity: 1; }
 .influ-list-table td { padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:middle; }
 .influ-list-table tr:last-child td { border-bottom:none; }
 .influ-list-table tr:hover td { background:#FAFAF8; }
-.influ-list-handle { display:flex; align-items:center; gap:8px; }
+.influ-list-handle { display:flex; align-items:center; gap:8px; white-space:nowrap; }
+.influ-list-table th.num, .influ-list-table td.num { text-align:right; }
+.influ-list-table td { font-size:12px; vertical-align:top; }
+.influ-list-table td.il-wrap { white-space:normal; min-width:150px; max-width:220px; line-height:1.35; }
+.influ-list-table td.il-multi { font-size:11px; color:var(--ink-2); }
+.influ-list-table td.il-porque { min-width:220px; max-width:340px; font-size:11px; color:var(--ink-2); }
+.influ-list-wrap { overflow-x:auto; }
 .influ-list-avatar { width:30px; height:30px; border-radius:50%; background:var(--accent-light); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--accent); flex-shrink:0; }
 
 /* FLUXO DE PAGAMENTOS */
@@ -3443,6 +3449,8 @@ function renderInfluList() {
     else if (listSortKey === 'estado') { av = a.estado || 'zz'; bv = b.estado || 'zz'; }
     else if (listSortKey === 'seguidores') { av = a.seguidores || 0; bv = b.seguidores || 0; }
     else if (listSortKey === 'tier') { av = (tamanhoInfo(a.tamanho) || {min:0}).min; bv = (tamanhoInfo(b.tamanho) || {min:0}).min; }
+    else if (listSortKey === 'escopo') { av = (a.escopo || 'zzz').toLowerCase(); bv = (b.escopo || 'zzz').toLowerCase(); }
+    else if (listSortKey === 'mediaViews' || listSortKey === 'taxaEng' || listSortKey === 'cpmRef') { av = a[listSortKey] || 0; bv = b[listSortKey] || 0; }
     else { av = a.nome.toLowerCase(); bv = b.nome.toLowerCase(); }
     return av < bv ? -listSortDir : av > bv ? listSortDir : 0;
   });
@@ -3465,10 +3473,14 @@ function renderInfluList() {
     <th class="${thCls('seguidores')}" onclick="sortInfluList('seguidores')">Seguidores ${arrow('seguidores')}</th>
     <th class="${thCls('tier')}" onclick="sortInfluList('tier')">Tier ${arrow('tier')}</th>
     <th>Cupom</th>
-    <th class="${thCls('rcs')}" onclick="sortInfluList('rcs')">Total RCS ${arrow('rcs')}</th>
-    <th class="${thCls('din')}" onclick="sortInfluList('din')">Total Dinheiro ${arrow('din')}</th>
-    <th class="${thCls('total')}" onclick="sortInfluList('total')">Total Geral ${arrow('total')}</th>
-    ${mesLabels.map(m => `<th>${m.label}</th>`).join('')}
+    <th class="${thCls('escopo')}" onclick="sortInfluList('escopo')">Escopo ${arrow('escopo')}</th>
+    <th class="${thCls('mediaViews')} num" onclick="sortInfluList('mediaViews')">Média views ${arrow('mediaViews')}</th>
+    <th class="${thCls('taxaEng')} num" onclick="sortInfluList('taxaEng')">Taxa engaj. ${arrow('taxaEng')}</th>
+    <th class="${thCls('cpmRef')} num" onclick="sortInfluList('cpmRef')">CPM ref. ${arrow('cpmRef')}</th>
+    <th>Localização da audiência</th>
+    <th>Faixa etária</th>
+    <th>Por que</th>
+    <th class="num" style="cursor:default;color:var(--ink-4)" data-tip="Brand Fit Score: regra a definir">Brand Fit</th>
     <th></th>
   </tr>`;
 
@@ -3481,15 +3493,6 @@ function renderInfluList() {
   tbody.innerHTML = sorted.map(inf => {
     const t = influTotals[inf.id];
     const ini = inf.nome.slice(0,2).toUpperCase();
-    const mesCells = mesLabels.map(m => {
-      const mv = t.byMes[m.mid] || {rcs:0,din:0};
-      const tot = mv.rcs + mv.din;
-      if (tot === 0) return '<td style="color:var(--ink-4);text-align:center">—</td>';
-      return `<td style="font-size:12px">
-        ${mv.rcs > 0 ? `<div class="val-rcs-tag">${fmt(mv.rcs)}</div>` : ''}
-        ${mv.din > 0 ? `<div class="val-din-tag" style="margin-top:2px">${fmt(mv.din)}</div>` : ''}
-      </td>`;
-    }).join('');
 
     return `<tr>
       <td>
@@ -3503,10 +3506,14 @@ function renderInfluList() {
       <td style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">${inf.seguidores ? fmtK(inf.seguidores) : '<span style="color:var(--ink-4)">—</span>'}</td>
       <td>${tamanhoInfo(inf.tamanho) ? '<span class="ic-size ic-size-' + inf.tamanho + '">' + tamanhoInfo(inf.tamanho).label + '</span>' : '<span style="color:var(--ink-4)">—</span>'}</td>
       <td style="font-size:12px;font-weight:600;color:var(--ink-3)">${inf.cupom||'—'}</td>
-      <td><span class="val-rcs-tag">${fmt(t.totalRCS)}</span></td>
-      <td><span class="val-din-tag">${fmt(t.totalDin)}</span></td>
-      <td style="font-weight:800;font-variant-numeric:tabular-nums">${fmt(t.total)}</td>
-      ${mesCells}
+      <td class="il-wrap">${inf.escopo || '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="num" style="font-variant-numeric:tabular-nums">${inf.mediaViews ? fmtNum(inf.mediaViews) : '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="num" style="font-variant-numeric:tabular-nums">${inf.taxaEng ? fmtBR(inf.taxaEng,2) + '%' : '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="num" style="font-variant-numeric:tabular-nums">${inf.cpmRef ? fmtMoney2(inf.cpmRef) : '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="il-wrap il-multi">${nl2br(inf.audLoc) || '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="il-wrap il-multi">${nl2br(inf.faixaEtaria) || '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="il-wrap il-porque">${nl2br(inf.porque) || '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td class="num"><span class="bf-chip">—</span></td>
       <td>
         <div style="display:flex;gap:4px">
           <button class="btn-icon" onclick="openInfluModal(${inf.id})" title="Editar">✏️</button>
