@@ -493,6 +493,19 @@ tr:hover .row-del { opacity: 1; }
   .rep-tbl { font-size:10px; } .rep-tbl td, .rep-tbl th { padding:5px 7px; }
 }
 
+/* ── Perfil do influenciador ── */
+#influ-modal .modal { max-width: 620px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+#influ-modal textarea.form-input { resize:vertical; font-family:'Albert Sans',sans-serif; line-height:1.4; }
+.form-hint { font-size:10px; font-weight:600; color:var(--ink-4); margin-left:6px; }
+.ic-hd-meta { font-size:11px; color:var(--ink-3); margin-top:3px; display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+.ic-hd-meta b { color:var(--ink-2); font-weight:700; }
+.ic-prof { display:grid; grid-template-columns:1fr 1fr; gap:8px 12px; }
+.ic-prof div span { display:block; font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-4); }
+.ic-prof div b { display:block; font-size:12px; font-weight:700; color:var(--ink); white-space:normal; }
+.ic-prof div b.vazio { color:var(--ink-4); font-weight:500; }
+.ic-prof .wide { grid-column:1 / -1; }
+.bf-chip { display:inline-flex; align-items:center; gap:5px; font-size:10px; font-weight:700; padding:3px 8px; border-radius:10px; background:var(--surface); color:var(--ink-4); border:1px dashed var(--border-2); cursor:help; }
 /* ── Campanhas ── */
 .btn:disabled { opacity:.4; cursor:not-allowed; }
 .camp-auto { position:absolute; left:0; right:0; top:100%; margin-top:4px; background:var(--white); border:1px solid var(--border-2); border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,.12); z-index:20; max-height:260px; overflow:auto; }
@@ -933,17 +946,38 @@ tr:hover .row-del { opacity: 1; }
       <div class="form-group"><label class="form-label">Nome</label><input class="form-input" id="f-nome" placeholder="Nome completo ou apelido"></div>
       <div class="form-group"><label class="form-label">@Handle</label><input class="form-input" id="f-handle" placeholder="@handle"></div>
       <div class="form-group"><label class="form-label">Link do Perfil</label><input class="form-input" id="f-link" type="url" placeholder="https://instagram.com/..."></div>
-      <div class="form-group"><label class="form-label">Cupom</label><input class="form-input" id="f-cupom" placeholder="EX: INFLU15OFF"></div>
-      <div class="form-group"><label class="form-label">Tamanho (seguidores)</label>
-        <select class="form-select" id="f-tamanho">
-          <option value="">— não informado —</option>
-          <option value="nano">Nano · 1k – 10k</option>
-          <option value="micro">Micro · 10k – 50k</option>
-          <option value="mid">Mid · 50k – 100k</option>
-          <option value="macro">Macro · 100k – 1M</option>
-          <option value="mega">Mega · 1M – 4M</option>
-          <option value="vip">VIP · 4M+</option>
-        </select></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Cupom</label><input class="form-input" id="f-cupom" placeholder="EX: INFLU15OFF"></div>
+        <div class="form-group"><label class="form-label">Estado (UF)</label>
+          <select class="form-select" id="f-estado"><option value="">—</option><option>AC</option><option>AL</option><option>AP</option><option>AM</option><option>BA</option><option>CE</option><option>DF</option><option>ES</option><option>GO</option><option>MA</option><option>MT</option><option>MS</option><option>MG</option><option>PA</option><option>PB</option><option>PR</option><option>PE</option><option>PI</option><option>RJ</option><option>RN</option><option>RS</option><option>RO</option><option>RR</option><option>SC</option><option>SP</option><option>SE</option><option>TO</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Seguidores</label><input class="form-input" id="f-seguidores" type="number" min="0" placeholder="Ex: 85000" oninput="sugerirTier()"></div>
+        <div class="form-group"><label class="form-label">Tier <span id="f-tier-hint" class="form-hint"></span></label>
+          <select class="form-select" id="f-tamanho">
+            <option value="">— não informado —</option>
+            <option value="nano">Nano · 1k – 10k</option>
+            <option value="micro">Micro · 10k – 50k</option>
+            <option value="mid">Mid · 50k – 100k</option>
+            <option value="macro">Macro · 100k – 1M</option>
+            <option value="mega">Mega · 1M – 4M</option>
+            <option value="vip">VIP · 4M+</option>
+          </select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Média de visualizações</label><input class="form-input" id="f-mediaviews" type="number" min="0" placeholder="por post"></div>
+        <div class="form-group"><label class="form-label">Taxa de engajamento (%)</label><input class="form-input" id="f-taxaeng" type="number" min="0" step="0.1" placeholder="Ex: 4,5"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Localização da audiência <span class="form-hint">uma por linha</span></label><textarea class="form-input" id="f-audloc" rows="3" placeholder="Rio de Janeiro, Brazil 45%&#10;Duque de Caxias, Brazil 5%"></textarea></div>
+        <div class="form-group"><label class="form-label">Faixa etária do público <span class="form-hint">uma por linha</span></label><textarea class="form-input" id="f-faixa" rows="3" placeholder="18 a 24 – 3%&#10;25 a 34 – 18%&#10;35 a 44 – 30%"></textarea></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Escopo</label><input class="form-input" id="f-escopo" placeholder="Ex: Lifestyle, gastronomia, humor"></div>
+        <div class="form-group"><label class="form-label">CPM de referência (R$)</label><input class="form-input" id="f-cpmref" type="number" min="0" step="0.01" placeholder="Ex: 12,50"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Por que esse influenciador <span class="form-hint">justificativa / observações</span></label><textarea class="form-input" id="f-porque" rows="2" placeholder="Ex: foco em turismo e gastronomia, audiência concentrada no RJ, maior taxa de engajamento entre os selecionados"></textarea></div>
+      <div class="form-group" style="opacity:.55"><label class="form-label">Brand Fit Score <span class="form-hint">em breve · regra a definir</span></label><input class="form-input" disabled placeholder="Calculado automaticamente no futuro"></div>
     </div>
     <div class="modal-footer">
       <button class="btn btn-ghost" onclick="closeInfluModal()">Cancelar</button>
@@ -1055,7 +1089,7 @@ let influEditId = null;
 let campModalMesId = null;
 
 let influs = [];
-let influIdCounter = 125;
+let influIdCounter = 1;
 
 let campanhas = {};
 campCounter=500;rowCounter=10000; rowCounter = 6;
@@ -1393,7 +1427,7 @@ function buildInfluCard(inf) {
     body = '<div class="ic-stats">' +
       '<div class="ic-stat"><span>Total acumulado</span><b>' + fmt(total) + '</b><small><i class="rs-din">' + fmt(tot.totalDin) + '</i> R$ · <i class="rs-rcs">' + fmt(tot.totalRCS) + '</i> RCS</small></div>' +
       '<div class="ic-stat"><span>Cupom</span><b>' + (inf.cupom || '—') + '</b></div>' +
-    '</div>' + (sub ? '<div class="ic-subs">' + sub + '</div>' : '<div class="ic-empty">Sem resultados fechados ainda — o score aparece quando a primeira semana for fechada.</div>');
+    '</div>' + (sub ? '<div class="ic-subs">' + sub + '</div>' : '<div class="ic-empty">Sem resultados fechados ainda — o score aparece quando a primeira semana for fechada.' + ((inf.mediaViews || inf.taxaEng || inf.cpmRef) ? ' Referências do perfil: ' + [inf.mediaViews ? fmtK(inf.mediaViews) + ' views/post' : '', inf.taxaEng ? fmtBR(inf.taxaEng,1) + '% engaj.' : '', inf.cpmRef ? 'CPM ' + fmtMoney2(inf.cpmRef) : ''].filter(Boolean).join(' · ') : '') + '</div>');
   } else if (tab === 'performance') {
     var view = influPerfView[inf.id] || 'mes';
     var sem = influSemanas(inf.id).filter(function(x) { return x.ok; });
@@ -1443,15 +1477,34 @@ function buildInfluCard(inf) {
       }).join('') + '</div>';
     }).join('') : '<div class="ic-empty">Nenhuma campanha ainda.</div>';
   }
+  if (tab === 'perfil') {
+    var f = function(l, v, wide, vazioTxt) { return '<div' + (wide ? ' class="wide"' : '') + '><span>' + l + '</span><b' + (v ? '' : ' class="vazio"') + '>' + (v || vazioTxt || 'não informado') + '</b></div>'; };
+    body = '<div class="ic-prof">' +
+      f('Perfil', inf.link ? '<a class="influ-handle" href="' + inf.link + '" target="_blank">' + inf.handle + ' ↗</a>' : inf.handle) +
+      f('Estado', inf.estado) +
+      f('Seguidores', inf.seguidores ? fmtNum(inf.seguidores) : '') +
+      f('Tier', tam ? tam.label + ' <small style="color:var(--ink-3);font-weight:500">' + tam.faixa + '</small>' : '') +
+      f('Média de visualizações', inf.mediaViews ? fmtNum(inf.mediaViews) + ' <small style="color:var(--ink-3);font-weight:500">por post</small>' : '') +
+      f('Taxa de engajamento', inf.taxaEng ? fmtBR(inf.taxaEng, 1) + '%' : '') +
+      f('Localização da audiência', nl2br(inf.audLoc)) +
+      f('Faixa etária do público', nl2br(inf.faixaEtaria)) +
+      f('CPM de referência', inf.cpmRef ? fmtMoney2(inf.cpmRef) : '') +
+      f('Escopo', inf.escopo, true) +
+      f('Por que esse influenciador', nl2br(inf.porque), true) +
+      f('Brand Fit Score', '', true, '<span class="bf-chip">em breve · regra a definir</span>') +
+    '</div>';
+  }
   var tabBtn = function(id, label) { return '<button class="ic-tab' + (tab === id ? ' active' : '') + '" onclick="setInfluCardTab(' + inf.id + ',\'' + id + '\')">' + label + '</button>'; };
   return '<div class="influ-card" id="influ-card-' + inf.id + '">' +
     '<div class="ic-top">' +
       '<div class="influ-avatar">' + ini + '</div>' +
       '<div class="influ-info"><div class="influ-name">' + inf.nome + '</div><a class="influ-handle" href="' + (inf.link||'#') + '" target="_blank">' + inf.handle + '</a>' +
-        '<div class="ic-tags">' + (tam ? '<span class="ic-size ic-size-' + tam.id + '" data-tip="' + tam.faixa + ' seguidores">' + tam.label + ' <small>' + tam.faixa + '</small></span>' : '<span class="ic-size ic-size-none" data-tip="Defina o tamanho em Editar">tamanho não informado</span>') + '</div>' +
+        '<div class="ic-tags">' + (tam ? '<span class="ic-size ic-size-' + tam.id + '" data-tip="' + tam.faixa + ' seguidores">' + tam.label + '</span>' : '<span class="ic-size ic-size-none" data-tip="Defina o tier em Editar">tier não informado</span>') +
+          '<span class="bf-chip" data-tip="Brand Fit Score: índice a ser definido. A regra de cálculo será configurada em breve.">Brand Fit <b>—</b></span></div>' +
+        '<div class="ic-hd-meta">' + (inf.seguidores ? '<b>' + fmtK(inf.seguidores) + '</b> seguidores' : '<span style="color:var(--ink-4)">seguidores não informados</span>') + (inf.estado ? ' · <b>' + inf.estado + '</b>' : '') + (inf.escopo ? ' · ' + inf.escopo : '') + '</div>' +
       '</div>' + medal +
     '</div>' +
-    '<div class="ic-tabs">' + tabBtn('resumo', 'Resumo') + tabBtn('performance', 'Performance') + tabBtn('campanhas', 'Campanhas') + '</div>' +
+    '<div class="ic-tabs">' + tabBtn('resumo', 'Resumo') + tabBtn('perfil', 'Perfil') + tabBtn('performance', 'Performance') + tabBtn('campanhas', 'Campanhas') + '</div>' +
     '<div class="ic-body">' + body + '</div>' +
     '<div class="influ-card-footer">' +
       '<button class="btn btn-ghost btn-sm" onclick="openInfluModal(' + inf.id + ')">✏️ Editar</button>' +
@@ -1499,14 +1552,38 @@ function openInfluModal(id) {
       document.getElementById('f-link').value = inf.link;
       document.getElementById('f-cupom').value = inf.cupom;
       document.getElementById('f-tamanho').value = inf.tamanho || '';
+      document.getElementById('f-estado').value = inf.estado || '';
+      document.getElementById('f-seguidores').value = inf.seguidores || '';
+      document.getElementById('f-mediaviews').value = inf.mediaViews || '';
+      document.getElementById('f-taxaeng').value = inf.taxaEng || '';
+      document.getElementById('f-audloc').value = inf.audLoc || '';
+      document.getElementById('f-faixa').value = inf.faixaEtaria || '';
+      document.getElementById('f-escopo').value = inf.escopo || '';
+      document.getElementById('f-cpmref').value = inf.cpmRef || '';
+      document.getElementById('f-porque').value = inf.porque || '';
     }
   } else {
-    ['f-nome','f-handle','f-link','f-cupom','f-tamanho'].forEach(id => document.getElementById(id).value = '');
+    ['f-nome','f-handle','f-link','f-cupom','f-tamanho','f-estado','f-seguidores','f-mediaviews','f-taxaeng','f-audloc','f-faixa','f-escopo','f-cpmref','f-porque'].forEach(id => document.getElementById(id).value = '');
   }
+  sugerirTier();
   document.getElementById('influ-modal').classList.add('open');
   setTimeout(() => document.getElementById('f-nome').focus(), 100);
 }
 
+// Sugere o tier a partir do número de seguidores (e preenche se ainda vazio)
+function tierPorSeguidores(n) {
+  if (!n || n < 1000) return '';
+  var t = ''; TAMANHOS.forEach(function(x) { if (n >= x.min) t = x.id; }); return t;
+}
+function sugerirTier() {
+  var n = parseInt(document.getElementById('f-seguidores').value) || 0;
+  var sel = document.getElementById('f-tamanho'); var hint = document.getElementById('f-tier-hint');
+  var t = tierPorSeguidores(n);
+  if (t && !sel.value) sel.value = t;
+  if (hint) hint.textContent = t ? 'sugerido pelos seguidores: ' + tamanhoInfo(t).label : '';
+}
+function nl2br(t) { return t ? String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').split('\n').join('<br>') : ''; }
+function fmtK(n) { n = parseInt(n) || 0; if (n >= 1000000) return (n/1000000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + 'M'; if (n >= 1000) return (n/1000).toLocaleString('pt-BR', { maximumFractionDigits: n >= 100000 ? 0 : 1 }) + 'k'; return String(n); }
 function closeInfluModal() { document.getElementById('influ-modal').classList.remove('open'); }
 
 function saveInflu() {
@@ -1520,6 +1597,16 @@ function saveInflu() {
     link: document.getElementById('f-link').value.trim(),
     cupom: document.getElementById('f-cupom').value.trim(),
     tamanho: document.getElementById('f-tamanho').value || '',
+    estado: document.getElementById('f-estado').value || '',
+    seguidores: parseInt(document.getElementById('f-seguidores').value) || 0,
+    mediaViews: parseInt(document.getElementById('f-mediaviews').value) || 0,
+    taxaEng: parseFloat(String(document.getElementById('f-taxaeng').value).replace(',','.')) || 0,
+    audLoc: document.getElementById('f-audloc').value.trim(),
+    faixaEtaria: document.getElementById('f-faixa').value.trim(),
+    escopo: document.getElementById('f-escopo').value.trim(),
+    cpmRef: parseFloat(String(document.getElementById('f-cpmref').value).replace(',','.')) || 0,
+    porque: document.getElementById('f-porque').value.trim(),
+    brandFit: null,
   };
   if (influEditId) {
     influs[influs.findIndex(i => i.id === influEditId)] = obj;
@@ -2122,7 +2209,7 @@ function importarBackup() {
       var add = 0, maxId = influs.reduce(function(m, i) { return Math.max(m, i.id); }, 0);
       d.influs.forEach(function(x) {
         if (influs.some(function(i) { return i.handle.toLowerCase() === String(x.handle).toLowerCase(); })) return;
-        maxId++; influs.push({ id: maxId, nome: x.nome, handle: x.handle, link: x.link || '', cupom: x.cupom || '', tamanho: x.tamanho || '' }); add++;
+        maxId++; influs.push(Object.assign({ id: maxId, nome: x.nome, handle: x.handle, link: x.link || '', cupom: x.cupom || '', tamanho: x.tamanho || '' }, { estado: x.estado || '', seguidores: x.seguidores || 0, mediaViews: x.mediaViews || 0, taxaEng: x.taxaEng || 0, audLoc: x.audLoc || '', faixaEtaria: x.faixaEtaria || '', escopo: x.escopo || '', cpmRef: x.cpmRef || 0, porque: x.porque || '' })); add++;
       });
       influIdCounter = maxId + 1;
       renderInfluGrid(); scheduleSave(); closeBackupModal();
@@ -3353,6 +3440,9 @@ function renderInfluList() {
     else if (listSortKey === 'total') { av = influTotals[a.id].total; bv = influTotals[b.id].total; }
     else if (listSortKey === 'rcs') { av = influTotals[a.id].totalRCS; bv = influTotals[b.id].totalRCS; }
     else if (listSortKey === 'din') { av = influTotals[a.id].totalDin; bv = influTotals[b.id].totalDin; }
+    else if (listSortKey === 'estado') { av = a.estado || 'zz'; bv = b.estado || 'zz'; }
+    else if (listSortKey === 'seguidores') { av = a.seguidores || 0; bv = b.seguidores || 0; }
+    else if (listSortKey === 'tier') { av = (tamanhoInfo(a.tamanho) || {min:0}).min; bv = (tamanhoInfo(b.tamanho) || {min:0}).min; }
     else { av = a.nome.toLowerCase(); bv = b.nome.toLowerCase(); }
     return av < bv ? -listSortDir : av > bv ? listSortDir : 0;
   });
@@ -3371,6 +3461,9 @@ function renderInfluList() {
   thead.innerHTML = `<tr>
     <th class="${thCls('nome')}" onclick="sortInfluList('nome')">Nome ${arrow('nome')}</th>
     <th class="${thCls('handle')}" onclick="sortInfluList('handle')">Handle ${arrow('handle')}</th>
+    <th class="${thCls('estado')}" onclick="sortInfluList('estado')">UF ${arrow('estado')}</th>
+    <th class="${thCls('seguidores')}" onclick="sortInfluList('seguidores')">Seguidores ${arrow('seguidores')}</th>
+    <th class="${thCls('tier')}" onclick="sortInfluList('tier')">Tier ${arrow('tier')}</th>
     <th>Cupom</th>
     <th class="${thCls('rcs')}" onclick="sortInfluList('rcs')">Total RCS ${arrow('rcs')}</th>
     <th class="${thCls('din')}" onclick="sortInfluList('din')">Total Dinheiro ${arrow('din')}</th>
@@ -3406,6 +3499,9 @@ function renderInfluList() {
         </div>
       </td>
       <td><a href="${inf.link||'#'}" target="_blank" style="color:var(--accent);font-weight:500;text-decoration:none;font-size:12px">${inf.handle}</a></td>
+      <td style="font-size:12px;font-weight:600">${inf.estado||'<span style="color:var(--ink-4)">—</span>'}</td>
+      <td style="font-size:12px;font-weight:600;font-variant-numeric:tabular-nums">${inf.seguidores ? fmtK(inf.seguidores) : '<span style="color:var(--ink-4)">—</span>'}</td>
+      <td>${tamanhoInfo(inf.tamanho) ? '<span class="ic-size ic-size-' + inf.tamanho + '">' + tamanhoInfo(inf.tamanho).label + '</span>' : '<span style="color:var(--ink-4)">—</span>'}</td>
       <td style="font-size:12px;font-weight:600;color:var(--ink-3)">${inf.cupom||'—'}</td>
       <td><span class="val-rcs-tag">${fmt(t.totalRCS)}</span></td>
       <td><span class="val-din-tag">${fmt(t.totalDin)}</span></td>
@@ -3901,7 +3997,7 @@ function loadFromFirestore() {
   db.collection('data').doc('v2').get().then(function(doc) {
     if (doc.exists) {
       var d = doc.data();
-      if (d.influs) { influs = d.influs; influIdCounter = influs.length + 1; }
+      if (d.influs) { influs = d.influs; influIdCounter = influs.reduce(function(m, i) { return Math.max(m, i.id || 0); }, 0) + 1; }
       if (d.campanhas) campanhas = d.campanhas;
       if (d.infoBlocks) infoBlocks = d.infoBlocks;
       if (d.pagamentos) pagamentos = d.pagamentos;
