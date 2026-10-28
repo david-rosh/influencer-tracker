@@ -1098,7 +1098,24 @@ let influs = [];
 let influIdCounter = 1;
 
 let campanhas = {};
-campCounter=500;rowCounter=10000; rowCounter = 6;
+// IDs únicos: nunca colidem entre sessões (o contador antigo zerava a cada reload)
+function uid(prefix) { return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+// Corrige dados já salvos com IDs duplicados (bug das versões anteriores)
+function sanitizeIds() {
+  var vistos = {}; var corrigidos = 0;
+  Object.keys(campanhas).forEach(function(mesId) {
+    (campanhas[mesId] || []).forEach(function(c) {
+      if (!c.id || vistos['c:' + c.id]) { c.id = uid('camp-'); corrigidos++; }
+      vistos['c:' + c.id] = 1;
+      (c.rows || []).forEach(function(r) {
+        if (!r.id || vistos['r:' + r.id]) { r.id = uid('r'); corrigidos++; }
+        vistos['r:' + r.id] = 1;
+      });
+    });
+  });
+  if (corrigidos) { console.warn('IDs duplicados corrigidos:', corrigidos); scheduleSave(); }
+  return corrigidos;
+}
 var _defaultCampanhas = {};
 
 let infoBlocks = {};
@@ -1698,8 +1715,7 @@ function confirmAddCampanha() {
   var nova = !cat;
   if (!cat) cat = ensureCat(nome);
   if ((campanhas[campModalMesId] || []).some(function(c) { return c.catId === cat.id; })) { showToast('Essa campanha já existe neste mês', '⚠️'); return; }
-  campCounter++;
-  const campId = 'camp-' + campCounter;
+  const campId = uid('camp-');
   if (!campanhas[campModalMesId]) campanhas[campModalMesId] = [];
   campanhas[campModalMesId].push({ id: campId, nome: cat.nome, status, rows: [], catId: cat.id });
   closeCampanhaModal();
@@ -2229,6 +2245,7 @@ function importarBackup() {
     document.querySelectorAll('.mes-content').forEach(function(e) { e.remove(); });
     activeMeses = []; monthCounter = 0; mesLabels = {}; semanalMeses = d.semanalMeses || {};
     restaurarMeses(d.meses || []);
+    sanitizeIds();
     activeMeses.forEach(function(m) { if (semanalMeses[m] === undefined) semanalMeses[m] = !!(campanhas[m] || []).some(function(c) { return c.rows.some(function(r) { return r.semanas; }); }); });
     migrarCatalogo();
     activeMeses.forEach(function(m) { renderCampanhasBlock(m); renderInfoBlock(m,'editorias'); renderInfoBlock(m,'acoes'); recalcBudget(m); });
@@ -3072,11 +3089,11 @@ function updateCampanhaStatus(mesId, campId, selectEl) {
 }
 
 function addRow(mesId, campId) {
-  rowCounter++;
   const camp = (campanhas[mesId]||[]).find(c => c.id === campId);
   if (!camp) return;
-  if (isSemanal(mesId)) camp.rows.push({ id: 'r' + rowCounter, influId: null, semanas: {} });
-  else camp.rows.push({ id: 'r' + rowCounter, influId: null, data: '', valor: 0, tipo: 'Dinheiro' });
+  const rid = uid('r');
+  if (isSemanal(mesId)) camp.rows.push({ id: rid, influId: null, semanas: {} });
+  else camp.rows.push({ id: rid, influId: null, data: '', valor: 0, tipo: 'Dinheiro' });
   renderCampanhasBlock(mesId);
   recalcBudget(mesId);
 }
@@ -4012,6 +4029,7 @@ function loadFromFirestore() {
       activeMeses.forEach(function(m) { if (semanalMeses[m] === undefined) semanalMeses[m] = true; });
       if (d.meses) restaurarMeses(d.meses);
       if (d.campanhasCatalogo) campanhasCatalogo = d.campanhasCatalogo;
+      sanitizeIds();
       migrarCatalogo();
       if (d.scoreConfig) { scoreConfig = Object.assign({}, scoreConfig, d.scoreConfig); if (d.scoreConfig.cpm === undefined) scoreConfig.cpm = 0; }
       Object.keys(_defaultCampanhas).forEach(function(k) { if (!campanhas[k]) campanhas[k] = _defaultCampanhas[k]; if (!infoBlocks[k]) infoBlocks[k] = {editorias:[],acoes:[]}; });
