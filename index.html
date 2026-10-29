@@ -499,6 +499,12 @@ tr:hover .row-del { opacity: 1; }
   .rep-tbl { font-size:10px; } .rep-tbl td, .rep-tbl th { padding:5px 7px; }
 }
 
+/* ── Status de salvamento ── */
+.save-status { font-size:11px; font-weight:600; padding:4px 10px; border-radius:12px; margin-right:6px; white-space:nowrap; }
+.save-status.ok { color:#4ADE80; background:rgba(74,222,128,.12); }
+.save-status.pending { color:#FCD34D; background:rgba(252,211,77,.12); }
+.save-status.saving { color:#93C5FD; background:rgba(147,197,253,.12); }
+.save-status.err { color:#F87171; background:rgba(248,113,113,.15); }
 /* ── Perfil do influenciador ── */
 #influ-modal .modal { max-width: 620px; }
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
@@ -1649,6 +1655,8 @@ function deleteInflu(id) {
   if (!confirm('Remover este influenciador?')) return;
   influs = influs.filter(i => i.id !== id);
   renderInfluGrid();
+  if (influView === 'list') renderInfluList();
+  scheduleSave();
   showToast('Removido', '🗑');
 }
 
@@ -1729,6 +1737,7 @@ function removeCampanha(mesId, campId) {
   campanhas[mesId] = (campanhas[mesId]||[]).filter(c => c.id !== campId);
   renderCampanhasBlock(mesId);
   recalcBudget(mesId);
+  scheduleSave();
 }
 
 function ensureGestaoSortSelect(mesId, container) {
@@ -3082,6 +3091,7 @@ function updateCampanhaStatus(mesId, campId, selectEl) {
   const camp = (campanhas[mesId]||[]).find(c => c.id === campId);
   if (camp) {
     camp.status = val;
+    scheduleSave();
     // update select styling
     selectEl.className = 'status-select-pill ' + (STATUS_CLS[val] || 's-fila');
     renderStatusBlock(mesId);
@@ -3096,6 +3106,7 @@ function addRow(mesId, campId) {
   else camp.rows.push({ id: rid, influId: null, data: '', valor: 0, tipo: 'Dinheiro' });
   renderCampanhasBlock(mesId);
   recalcBudget(mesId);
+  scheduleSave();
 }
 
 function removeRow(mesId, campId, rowId) {
@@ -3103,6 +3114,7 @@ function removeRow(mesId, campId, rowId) {
   if (camp) camp.rows = camp.rows.filter(r => r.id !== rowId);
   renderCampanhasBlock(mesId);
   recalcBudget(mesId);
+  scheduleSave();
 }
 
 function updateRow(mesId, campId, rowId, field, val) {
@@ -3111,6 +3123,7 @@ function updateRow(mesId, campId, rowId, field, val) {
   const row = camp.rows.find(r => r.id === rowId);
   if (row) {
     row[field] = val;
+    scheduleSave();
     recalcBudget(mesId);
     renderStatusBlock(mesId);
     if (field === 'valor' || field === 'tipo' || (field === 'influId' && row.semanas)) {
@@ -3154,6 +3167,7 @@ function updateCampanhaStatusById(mesId, campId, selectEl) {
   const camp = (campanhas[mesId]||[]).find(c => c.id === campId);
   if (camp) {
     camp.status = val;
+    scheduleSave();
     selectEl.className = 'status-select-pill ' + (STATUS_CLS[val] || 's-fila');
     // also update the pill in the campanha block header
     renderCampanhasBlock(mesId);
@@ -3235,7 +3249,7 @@ function addInfoRow(tbodyId) {
   tr.innerHTML = `
     <td><select class="tbl-select">${diaOptions}</select></td>
     <td><input class="tbl-input" type="text" placeholder="Descrição…" style="width:100%"></td>
-    <td><button class="row-del" style="opacity:1" onclick="this.closest('tr').remove()">✕</button></td>`;
+    <td><button class="row-del" style="opacity:1" onclick="this.closest('tr').remove();scheduleSave()">✕</button></td>`;
   tbody.appendChild(tr);
 }
 
@@ -3251,7 +3265,7 @@ function renderInfoBlock(mesId, tipo) {
     tr.innerHTML = `
       <td><select class="tbl-select">${diaOptions}</select></td>
       <td><input class="tbl-input" type="text" value="${item.desc}" style="width:100%"></td>
-      <td><button class="row-del" style="opacity:1" onclick="this.closest('tr').remove()">✕</button></td>`;
+      <td><button class="row-del" style="opacity:1" onclick="this.closest('tr').remove();scheduleSave()">✕</button></td>`;
     tbody.appendChild(tr);
   });
 }
@@ -3546,6 +3560,7 @@ function toggleCampanha(mesId, campId) {
   const camp = (campanhas[mesId]||[]).find(c => c.id === campId);
   if (!camp) return;
   camp.collapsed = !camp.collapsed;
+  scheduleSave();
   const body = document.getElementById('camp-body-' + campId);
   const block = document.getElementById('block-' + campId);
   if (body) body.style.display = camp.collapsed ? 'none' : 'block';
@@ -4004,18 +4019,67 @@ function signInWithGoogle() {
 function signOut() { auth.signOut(); }
 
 var saveTimer = null;
+// Editorias e Ações vivem só no DOM: coletar antes de salvar
+function collectInfoBlocks() {
+  activeMeses.forEach(function(mesId) {
+    ['editorias','acoes'].forEach(function(tipo) {
+      var tbody = document.getElementById(mesId + '-' + tipo + '-tbody'); if (!tbody) return;
+      var rows = [];
+      tbody.querySelectorAll('tr').forEach(function(tr) {
+        var sel = tr.querySelector('select'), inp = tr.querySelector('input');
+        if (!sel || !inp) return;
+        if (!inp.value.trim() && !tr.dataset.keep) return;
+        rows.push({ dia: sel.value, desc: inp.value.trim() });
+      });
+      if (!infoBlocks[mesId]) infoBlocks[mesId] = { editorias: [], acoes: [] };
+      infoBlocks[mesId][tipo] = rows;
+    });
+  });
+}
+var savePending = false, saveInFlight = false, lastSavedAt = null;
+function setSaveStatus(state, txt) {
+  var el = document.getElementById('saveStatus'); if (!el) return;
+  el.className = 'save-status ' + state; el.textContent = txt;
+}
+function snapshotParaSalvar() {
+  collectInfoBlocks();
+  return {
+    influs: influs, campanhas: campanhas,
+    infoBlocks: infoBlocks, pagamentos: pagamentos, semanalMeses: semanalMeses, scoreConfig: scoreConfig, campanhasCatalogo: campanhasCatalogo, meses: mesesParaSalvar(),
+    updatedBy: currentUser ? currentUser.email : '',
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+  };
+}
+function saveNow() {
+  if (!currentUser) return Promise.resolve();
+  if (saveTimer) { clearTimeout(saveTimer); saveTimer = null; }
+  savePending = false; saveInFlight = true;
+  setSaveStatus('saving', 'Salvando…');
+  var payload = JSON.parse(JSON.stringify(snapshotParaSalvar()));
+  payload.updatedAt = firebase.firestore.FieldValue.serverTimestamp();
+  return db.collection('data').doc('v2').set(payload).then(function() {
+    saveInFlight = false; lastSavedAt = new Date();
+    setSaveStatus('ok', 'Salvo ' + lastSavedAt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }));
+    if (savePending) scheduleSave();
+  }).catch(function(e) {
+    saveInFlight = false; console.error('Save error:', e);
+    setSaveStatus('err', 'Erro ao salvar — tente de novo');
+    showToast('Não foi possível salvar. Verifique a conexão.', '⚠️');
+  });
+}
 function scheduleSave() {
   if (!currentUser) return;
+  savePending = true;
+  setSaveStatus('pending', 'Alterações não salvas…');
   if (saveTimer) clearTimeout(saveTimer);
-  saveTimer = setTimeout(function() {
-    db.collection('data').doc('v2').set({
-      influs: influs, campanhas: campanhas,
-      infoBlocks: infoBlocks, pagamentos: pagamentos, semanalMeses: semanalMeses, scoreConfig: scoreConfig, campanhasCatalogo: campanhasCatalogo, meses: mesesParaSalvar(),
-      updatedBy: currentUser.email,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }).catch(function(e) { console.error('Save error:', e); });
-  }, 1500);
+  saveTimer = setTimeout(function() { if (!saveInFlight) saveNow(); }, 1200);
 }
+// Rede de segurança: qualquer edição em campo do app agenda um save; sair da página força o save
+document.addEventListener('change', function(e) { if (e.target && e.target.closest && e.target.closest('#app-screen, .page, .mes-content')) scheduleSave(); });
+document.addEventListener('input', function(e) { if (e.target && e.target.closest && e.target.closest('.page, .mes-content')) scheduleSave(); });
+window.addEventListener('beforeunload', function() { if (savePending && currentUser) { try { navigator.sendBeacon && null; } catch (x) {} saveNow(); } });
+document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'hidden' && savePending) saveNow(); });
+setInterval(function() { if (savePending && !saveInFlight) saveNow(); }, 20000);
 
 function loadFromFirestore() {
   db.collection('data').doc('v2').get().then(function(doc) {
@@ -4053,6 +4117,12 @@ function initApp() {
   });
   buildMonthSelect();
   // Month select now handled by mes-tab-selector inside the page
+  // Indicador de salvamento
+  var ha00 = document.querySelector('.header-actions');
+  if (ha00 && !document.getElementById('saveStatus')) {
+    var ss = document.createElement('span'); ss.id = 'saveStatus'; ss.className = 'save-status ok'; ss.textContent = 'Tudo salvo';
+    ha00.insertBefore(ss, ha00.firstChild);
+  }
   // Backup (exportar/importar) — só editores
   var ha0 = document.querySelector('.header-actions');
   if (ha0 && !document.getElementById('backupBtn')) {
